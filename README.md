@@ -7,11 +7,10 @@ Technologies stack
 ==================
 JS:
 	YeoMan 		(http://yeoman.io/)
-	Grunt		(http://gruntjs.com/)
+	Grunt		  (http://gruntjs.com/)
+	Bower     (http://Bower.org)
 	AngularJS	(https://angularjs.org/)
 	jQuery		(http://jquery.com/)
-	Node.js   	(http://nodejs.org/)
-	Karma		(http://karma-runner.github.io/0.8/index.html)
 
 CSS:
 	SCSS		(http://sass-lang.com/)
