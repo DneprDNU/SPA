@@ -2,16 +2,12 @@
 
 /**
  * @ngdoc function
- * @name angularApp.controller:MainCtrl
+ * @name dnuApp.controller:MainCtrl
  * @description
  * # MainCtrl
  * Controller of the angularApp
  */
-angular.module('angularApp')
+angular.module('dnuApp')
   .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+
   });

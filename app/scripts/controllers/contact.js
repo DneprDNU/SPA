@@ -2,16 +2,12 @@
 
 /**
  * @ngdoc function
- * @name angularApp.controller:ContactCtrl
+ * @name dnuApp.controller:ContactCtrl
  * @description
  * # AboutCtrl
  * Controller of the angularApp
  */
-angular.module('angularApp')
+angular.module('dnuApp')
   .controller('ContactCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+
   });

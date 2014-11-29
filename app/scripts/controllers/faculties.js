@@ -2,13 +2,14 @@
 
 /**
  * @ngdoc function
- * @name angularApp.controller:FacultiesCtrl
+ * @name dnuApp.controller:FacultiesCtrl
  * @description
  * # FacultiesCtrl
- * Controller of the angularApp
+ * Controller of the dnuApp
  */
-angular.module('angularApp')
-  .controller('FacultiesCtrl', function ($scope, $timeout, dataService) {
+angular.module('dnuApp')
+  .controller('FacultiesCtrl', function ($scope, $timeout, restFacultiesList) {
+    $scope.collection = [];
     $scope.update = function () {
       dataService.get().then(function (data) {
         $scope.collection = data;
@@ -17,14 +18,20 @@ angular.module('angularApp')
       $timeout($scope.update, 4000);
     };
 
-    $scope.update();
+    //$scope.update();
 
     $scope.addOne = function () {
       $scope.collection.push({id:1, title: "Faculty", src: "http://dnu.thebodva.com/upload/b32f3d1ef28edf602362b91cb935886f.jpg"});
     };
+    $scope.addOne();
+    $scope.addOne();
+    $scope.addOne();
+    $scope.addOne();
+
+
   });
 
-angular.module('angularApp')
+angular.module('dnuApp')
   .service('dataService', function ($http) {
     return {
       get: function () {
@@ -45,10 +52,8 @@ angular.module('angularApp')
           'delay': 2
         });
 
-        var promise = $http
-          .post('/echo/json/', postData)
-          .then(function (resp) {
-            return resp.data;
+        var promise = restFacultiesList.getFacultiesList({}, function (response) {
+            return response.data;
           });
 
         return promise;
@@ -56,7 +61,7 @@ angular.module('angularApp')
     }
   });
 
-angular.module('angularApp')
+angular.module('dnuApp')
   .directive('isoRepeat', function ($timeout) {
     return {
       scope: {
@@ -67,15 +72,15 @@ angular.module('angularApp')
 
         var options = {
           animationEngine : 'jquery',
-          itemSelector: 'article',
+          itemSelector: 'isotope-container',
           layoutMode: 'fitRows',
           sortAscending: true
         };
 
         element.isotope(options);
 
-        scope.$watch('items', function(newVal, oldVal){
-          $timeout(function(){
+        scope.$watch('items', function(newVal, oldVal) {
+          $timeout(function () {
             element.isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });
           });
         },true);
