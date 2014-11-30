@@ -1,8 +1,8 @@
 node_modules
-dist
+#dist
 .tmp
 .idea
 .sass-cache
 bower_components
 .DS_Store
-/*.DS_Store
+*/*.DS_Store
