@@ -14,7 +14,7 @@ angular.module('restFaculties', ['ngResource'])
       {
         getFacultiesList: {
           method: 'GET',
-          headers : {'Content-Type': 'application/x-www-form-urlencoded'}
+          isArray: true
         }
       }
     );

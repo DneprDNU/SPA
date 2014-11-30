@@ -76,8 +76,8 @@ angular
     $httpProvider.interceptors.push(function ($q, $rootScope, $location) {
         return {
           'request': function(config) {
-            var isRestCall = config.url.indexOf('rest') == 0;
-            if (isRestCall && angular.isDefined($rootScope.authToken)) {
+            console.log($rootScope);
+            if (angular.isDefined($rootScope.authToken)) {
               var authToken = $rootScope.authToken;
               //if (exampleAppConfig.useAuthTokenHeader) {
                 config.headers['X-Auth-Token'] = authToken;

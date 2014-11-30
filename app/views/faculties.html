@@ -5,7 +5,8 @@
         <section id="isotope-container" isotope-dnu-container>
           <div ng-repeat="item in collection" class="faculty" isotope-dnu-item>
             <img src="{{ item.src }}" />
-            <p>{{ item.title }}</p>
+            <p>{{ item.name }}</p>
+            <p>{{ item.description }}</p>
           </div>
         </section>
       </div>
