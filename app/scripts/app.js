@@ -17,7 +17,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'restAuth',
-    'restFaculties',
+    'restFacultyResource',
+    'restResourceResource',
     'dnuApp.directives'
   ])
   .config([ '$routeProvider', '$locationProvider', '$httpProvider', function ($routeProvider, $locationProvider, $httpProvider) {
@@ -46,11 +47,31 @@ angular
         templateUrl: 'views/resources.html',
         controller: 'ResourcesCtrl'
       })
+      .when('/admin/faculties', {
+        templateUrl: 'views/admin/faculties.html',
+        controller: 'FacultyAdminListCtrl'
+      })
+      .when('/admin/faculty', {
+        templateUrl: 'views/admin/faculty.html',
+        controller: 'FacultyAdminCreateCtrl'
+      })
+      .when('/admin/faculty/:id', {
+        templateUrl: 'views/admin/faculty.html',
+        controller: 'FacultyAdminEditCtrl'
+      })
+      .when('/admin/resources', {
+        templateUrl: 'views/admin/resources.html',
+        controller: 'ResourceAdminListCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
+
+
     $httpProvider.defaults.useXDomain = true;
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
+
+
     $httpProvider.interceptors.push(function ($q, $rootScope, $location) {
         return {
           'responseError': function(rejection) {

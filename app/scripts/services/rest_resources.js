@@ -8,11 +8,10 @@
  *
  * Main module of the application.
  */
-angular.module('restFacultyResource', ['ngResource'])
-  .factory('restFaculty', function($resource) {
-    return $resource('http://5.101.104.13:8080/filestorage/rest/faculty/:id', {},
+angular.module('restResourceResource', ['ngResource'])
+  .factory('restResource', function($resource) {
+    return $resource('http://5.101.104.13:8080/filestorage/rest/resource/:id', {},
       {
-
         get: {
           method: 'GET'
         },
@@ -26,8 +25,8 @@ angular.module('restFacultyResource', ['ngResource'])
       }
     );
   })
-  .factory('restFaculties', function ($resource) {
-    return $resource('http://5.101.104.13:8080/filestorage/rest/faculty', {},
+  .factory('restResources', function ($resource) {
+    return $resource('http://5.101.104.13:8080/filestorage/rest/resource', {},
       {
         list: {
           method: 'GET',

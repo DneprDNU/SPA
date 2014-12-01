@@ -8,15 +8,14 @@
  * Controller of the dnuApp
  */
 angular.module('dnuApp')
-  .controller('FacultiesCtrl', function ($scope, $timeout, restFacultiesList) {
+  .controller('FacultiesCtrl', function ($scope, $timeout, restFaculties) {
     $scope.collection = [];
     $scope.update = function () {
-      restFacultiesList.getFacultiesList({}, function (data) {
+      restFaculties.list({}, function (data) {
         $scope.collection = data;
-        console.log(data);
       });
 
-      //$timeout($scope.update, 4000);
+      $timeout($scope.update, 10000);
     };
 
     $scope.update();
@@ -24,6 +23,6 @@ angular.module('dnuApp')
     $scope.addOne = function () {
       $scope.collection.push({id:1, title: "Faculty", src: "http://dnu.thebodva.com/upload/b32f3d1ef28edf602362b91cb935886f.jpg"});
     };
-    //$scope.addOne();
+
   });
 
