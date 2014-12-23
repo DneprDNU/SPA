@@ -18,6 +18,11 @@ angular
     'ngTouch',
     'restAuth',
     'restFacultyResource',
+    'restCategoryResource',
+    'restDepartmentResource',
+    'restSpecialityResource',
+    'restSubjectResource',
+    'restTeacherResource',
     'restResourceResource',
     'dnuApp.directives'
   ])
@@ -48,20 +53,88 @@ angular
         controller: 'ResourcesCtrl'
       })
       .when('/admin/faculties', {
-        templateUrl: 'views/admin/faculties.html',
+        templateUrl: 'views/admin/faculty/faculties.html',
         controller: 'FacultyAdminListCtrl'
       })
       .when('/admin/faculty', {
-        templateUrl: 'views/admin/faculty.html',
+        templateUrl: 'views/admin/faculty/faculty.html',
         controller: 'FacultyAdminCreateCtrl'
       })
       .when('/admin/faculty/:id', {
-        templateUrl: 'views/admin/faculty.html',
+        templateUrl: 'views/admin/faculty/faculty.html',
         controller: 'FacultyAdminEditCtrl'
       })
+      .when('/admin/categories', {
+        templateUrl: 'views/admin/category/categories.html',
+        controller: 'CategoryAdminListCtrl'
+      })
+      .when('/admin/category', {
+        templateUrl: 'views/admin/category/category.html',
+        controller: 'CategoryAdminCreateCtrl'
+      })
+      .when('/admin/category/:id', {
+        templateUrl: 'views/admin/category/category.html',
+        controller: 'CategoryAdminEditCtrl'
+      })
       .when('/admin/resources', {
-        templateUrl: 'views/admin/resources.html',
+        templateUrl: 'views/admin/resource/resources.html',
         controller: 'ResourceAdminListCtrl'
+      })
+      .when('/admin/resource', {
+        templateUrl: 'views/admin/resource/resource.html',
+        controller: 'ResourceAdminCreateCtrl'
+      })
+      .when('/admin/resource/:id', {
+        templateUrl: 'views/admin/resource/resource.html',
+        controller: 'ResourceAdminEditCtrl'
+      })
+      .when('/admin/teachers', {
+        templateUrl: 'views/admin/teacher/teachers.html',
+        controller: 'TeacherAdminListCtrl'
+      })
+      .when('/admin/teacher', {
+        templateUrl: 'views/admin/teacher/teacher.html',
+        controller: 'TeacherAdminCreateCtrl'
+      })
+      .when('/admin/teacher/:id', {
+        templateUrl: 'views/admin/teacher/teacher.html',
+        controller: 'TeacherAdminEditCtrl'
+      })
+      .when('/admin/subjects', {
+        templateUrl: 'views/admin/subject/subjects.html',
+        controller: 'SubjectAdminListCtrl'
+      })
+      .when('/admin/subject', {
+        templateUrl: 'views/admin/subject/subject.html',
+        controller: 'SubjectAdminCreateCtrl'
+      })
+      .when('/admin/subject/:id', {
+        templateUrl: 'views/admin/subject/subject.html',
+        controller: 'SubjectAdminEditCtrl'
+      })
+      .when('/admin/specialities', {
+        templateUrl: 'views/admin/speciality/specialities.html',
+        controller: 'SpecialityAdminListCtrl'
+      })
+      .when('/admin/speciality', {
+        templateUrl: 'views/admin/speciality/speciality.html',
+        controller: 'SpecialityAdminCreateCtrl'
+      })
+      .when('/admin/speciality/:id', {
+        templateUrl: 'views/admin/speciality/speciality.html',
+        controller: 'SpecialityAdminEditCtrl'
+      })
+      .when('/admin/departments', {
+        templateUrl: 'views/admin/department/departments.html',
+        controller: 'DepartmentAdminListCtrl'
+      })
+      .when('/admin/department', {
+        templateUrl: 'views/admin/department/department.html',
+        controller: 'DepartmentAdminCreateCtrl'
+      })
+      .when('/admin/department/:id', {
+        templateUrl: 'views/admin/department/department.html',
+        controller: 'DepartmentAdminEditCtrl'
       })
       .otherwise({
         redirectTo: '/'
@@ -97,7 +170,6 @@ angular
     $httpProvider.interceptors.push(function ($q, $rootScope, $location) {
         return {
           'request': function(config) {
-            console.log($rootScope);
             if (angular.isDefined($rootScope.authToken)) {
               var authToken = $rootScope.authToken;
               //if (exampleAppConfig.useAuthTokenHeader) {
@@ -151,6 +223,24 @@ angular
         $location.path(originalPath);
       });
     }
+
+    $rootScope.userMenuActions = [ {
+      name : "menu.login",
+      href : "#/login",
+      roles : []
+    }, {
+      name : "menu.logout",
+      href : "#/logout",
+      roles : [ 'READ_ONLY', 'ADMIN' ]
+    }, {
+      name : "menu.foo",
+      href : "#/foo",
+      roles : [ 'READ_ONLY', 'ADMIN' ]
+    }, {
+      name : "menu.adminArea",
+      href : "#/adminArea",
+      roles : [ 'ADMIN' ]
+    } ];
 
     $rootScope.initialized = true;
   });

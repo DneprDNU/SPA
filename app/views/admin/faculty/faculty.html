@@ -8,6 +8,17 @@
     <textarea class="form-control" id="description" placeholder="Enter description" ng-model="faculty.description"></textarea>
   </div>
   <div class="form-group">
+    <label for="short-description">Short Description</label>
+    <textarea class="form-control" id="short-description" placeholder="Enter short description" ng-model="faculty.short-description"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="departments">Departments</label>
+    <select id="departments" ng-model="faculty.departments" multiple>
+      <option value="department_1">department 1</option>
+      <option value="department_2">department 2</option>
+    </select>
+  </div>
+  <div class="form-group">
     <label for="image">File input</label>
     <input type="file" id="image">
     <p class="help-block">Upload faculty photo.</p>
