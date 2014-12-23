@@ -9,7 +9,7 @@
  * Main module of the application.
  */
 angular.module('restResourceResource', ['ngResource'])
-  .factory('restResource', function($resource) {
+  .factory('restResource', function($resource, $rootScope) {
     return $resource('http://' + $rootScope.serviceIp + ':8080/filestorage/rest/resource/:id', {},
       {
         get: {
@@ -25,7 +25,7 @@ angular.module('restResourceResource', ['ngResource'])
       }
     );
   })
-  .factory('restResources', function ($resource) {
+  .factory('restResources', function ($resource, $rootScope) {
     return $resource('http://' + $rootScope.serviceIp + ':8080/filestorage/rest/resource', {},
       {
         list: {

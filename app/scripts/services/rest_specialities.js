@@ -7,7 +7,7 @@
  * # dnuApp
  */
 angular.module('restSpecialityResource', ['ngResource'])
-  .factory('restFaculty', function($resource) {
+  .factory('restFaculty', function($resource, $rootScope) {
     return $resource('http://' + $rootScope.serviceIp + ':8080/filestorage/rest/speciality/:id', {},
       {
 
@@ -24,7 +24,7 @@ angular.module('restSpecialityResource', ['ngResource'])
       }
     );
   })
-  .factory('restSpecialities', function ($resource) {
+  .factory('restSpecialities', function ($resource, $rootScope) {
     return $resource('http://' + $rootScope.serviceIp + ':8080/filestorage/rest/speciality', {},
       {
         list: {

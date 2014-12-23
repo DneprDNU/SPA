@@ -30,21 +30,14 @@
     <input type="text" class="form-control" id="year" placeholder="Enter year" ng-model="resource.year">
   </div>
   <div class="form-group">
-    <label for="image">File input</label>
-    <input type="file" id="image">
-    <p class="help-block">Upload resource image.</p>
-  </div>
-  <div class="form-group">
     <label for="resource-file">File input</label>
-    <input type="file" id="resource-file">
+    <input type="file" ng-file-select ng-model="resourceFile" name="file" required>
     <p class="help-block">Upload resource image.</p>
   </div>
   <div class="control-group">
     <div class="controls">
       <a ng-click="cancel()" class="btn btn-small">cancel</a>
       <a ng-click="save()" class="btn btn-small btn-primary">update resource</a>
-
-      <a ng-click="createNewResource()" class="btn btn-small btn-primary">create new resource</a>
     </div>
   </div>
 </form>
