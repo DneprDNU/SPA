@@ -26,7 +26,10 @@ angular
     'restResourceResource',
     'dnuApp.directives'
   ])
-  .config([ '$routeProvider', '$locationProvider', '$httpProvider', function ($routeProvider, $locationProvider, $httpProvider) {
+  .run(function($rootScope) {
+    $rootScope.serviceIp = '80.240.139.45';
+  })
+  .config(['$routeProvider', '$locationProvider', '$httpProvider', function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -241,6 +244,8 @@ angular
       href : "#/adminArea",
       roles : [ 'ADMIN' ]
     } ];
+
+    $rootScope.serviceIp = '80.240.139.45';
 
     $rootScope.initialized = true;
   });

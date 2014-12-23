@@ -10,7 +10,7 @@
  */
 angular.module('restFacultyResource', ['ngResource'])
   .factory('restFaculty', function($resource) {
-    return $resource('http://5.101.104.13:8080/filestorage/rest/faculty/:id', {},
+    return $resource('http://' + $rootScope.serviceIp + ':8080/filestorage/rest/faculty/:id', {},
       {
 
         get: {
@@ -27,7 +27,7 @@ angular.module('restFacultyResource', ['ngResource'])
     );
   })
   .factory('restFaculties', function ($resource) {
-    return $resource('http://5.101.104.13:8080/filestorage/rest/faculty', {},
+    return $resource('http://' + $rootScope.serviceIp + ':8080/filestorage/rest/faculty', {},
       {
         list: {
           method: 'GET',
