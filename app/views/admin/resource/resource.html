@@ -13,16 +13,12 @@
   </div>
   <div class="form-group">
     <label for="subjects">Subjects</label>
-    <select id="subjects" ng-model="resource.subjects" multiple>
-      <option value="subject_1">Subject 1</option>
-      <option value="subject_2">Subject 2</option>
+    <select id="subjects" ng-options="item.id as item.name for item in subjects" ng-model="resource.subjects" multiple>
     </select>
   </div>
   <div class="form-group">
     <label for="categories">Categories</label>
-    <select id="categories" ng-model="resource.categories" multiple>
-      <option value="term_1">Term 1</option>
-      <option value="term_2">Term 2</option>
+    <select id="categories" ng-options="item.id as item.name for item in categories" ng-model="resource.categories" multiple>
     </select>
   </div>
   <div class="form-group">

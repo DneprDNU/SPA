@@ -7,7 +7,7 @@
  * # dnuApp
  */
 angular.module('restSubjectResource', ['ngResource'])
-  .factory('restFaculty', function($resource, $rootScope) {
+  .factory('restSubject', function($resource, $rootScope) {
     return $resource('http://' + $rootScope.serviceIp + ':8080/filestorage/rest/subject/:id', {},
       {
 

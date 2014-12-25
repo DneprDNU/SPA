@@ -8,9 +8,9 @@
  * Controller of the angularApp
  */
 angular.module('dnuApp')
-  .controller('SpecialityAdminEditCtrl', function ($scope, $location, $routeParams, restSpecialities) {
+  .controller('SpecialityAdminEditCtrl', function ($scope, $location, $routeParams, restSpeciality, restTeachers) {
     $scope.save = function() {
-      restSpecialities.update($scope.speciality);
+      restSpeciality.update($scope.speciality);
       $location.path('/admin/specialities');
     };
 
@@ -18,7 +18,9 @@ angular.module('dnuApp')
       $location.path('/admin/specialities');
     };
 
-    $scope.speciality = restSpecialities.get({id: $routeParams.id});
+    $scope.speciality = restSpeciality.get({id: $routeParams.id});
+
+    $scope.supervisors = restTeachers.list();
 
     // callback for ng-click 'createResource':
     $scope.createNewSpeciality = function () {

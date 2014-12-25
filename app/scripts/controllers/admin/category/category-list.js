@@ -22,7 +22,7 @@ angular.module('dnuApp')
 
     // callback for ng-click 'createResource':
     $scope.createNewCategory = function () {
-      $location.path('/admin/categorie');
+      $location.path('/admin/category');
     };
 
     $scope.categories = restCategories.list();

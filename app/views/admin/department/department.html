@@ -5,23 +5,18 @@
   </div>
   <div class="form-group">
     <label for="specialities">Speciality</label>
-    <select id="specialities" ng-model="department.specialities" multiple>
-      <option value="specialities_1">specialities 1</option>
-      <option value="specialities_2">specialities 2</option>
+    <select id="specialities" ng-options="item.id as item.name for item in specialities" ng-model="department.specialities" multiple>
     </select>
   </div>
   <div class="form-group">
     <label for="employees">Employees</label>
-    <select id="employees" ng-model="department.employees" multiple>
-      <option value="employees_1">Link 1</option>
-      <option value="employees_2">Link 2</option>
+    <select id="employees" ng-options="item.id as item.name for item in employees" ng-model="department.employees" multiple>
     </select>
   </div>
   <div class="control-group">
     <div class="controls">
       <a ng-click="cancel()" class="btn btn-small">cancel</a>
       <a ng-click="save()" class="btn btn-small btn-primary">update department</a>
-
     </div>
   </div>
 </form>

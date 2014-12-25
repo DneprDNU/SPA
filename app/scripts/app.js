@@ -55,6 +55,10 @@ angular
         templateUrl: 'views/resources.html',
         controller: 'ResourcesCtrl'
       })
+      .when('/admin', {
+        templateUrl: 'views/admin_menu.html',
+        controller: 'AdminMenuCtrl'
+      })
       .when('/admin/faculties', {
         templateUrl: 'views/admin/faculty/faculties.html',
         controller: 'FacultyAdminListCtrl'
@@ -201,11 +205,11 @@ angular
         return false;
       }
 
-      if ($rootScope.user.roles[role] === undefined) {
+      if ($rootScope.user.roles.indexOf(role) === undefined) {
         return false;
       }
 
-      return $rootScope.user.roles[role];
+      return true;
     };
 
     $rootScope.logout = function() {

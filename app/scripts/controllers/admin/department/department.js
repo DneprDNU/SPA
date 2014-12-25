@@ -8,9 +8,9 @@
  * Controller of the angularApp
  */
 angular.module('dnuApp')
-  .controller('DepartmentAdminEditCtrl', function ($scope, $location, $routeParams, restDepartments) {
+  .controller('DepartmentAdminEditCtrl', function ($scope, $location, $routeParams, restDepartment, restSpecialities, restTeachers) {
     $scope.save = function() {
-      restDepartments.update($scope.department);
+      restDepartment.update($scope.department);
       $location.path('/admin/departments');
     };
 
@@ -18,7 +18,10 @@ angular.module('dnuApp')
       $location.path('/admin/departments');
     };
 
-    $scope.department = restDepartments.get({id: $routeParams.id});
+    $scope.department = restDepartment.get({id: $routeParams.id});
+
+    $scope.specialities = restSpecialities.list();
+    $scope.employees = restTeachers.list();
 
     // callback for ng-click 'createResource':
     $scope.createNewDepartment = function () {
