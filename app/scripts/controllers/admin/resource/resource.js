@@ -44,11 +44,15 @@ angular.module('dnuApp')
   });
 
 angular.module('dnuApp')
-  .controller('ResourceAdminCreateCtrl', function ($scope, $location, $routeParams, restResources) {
+  .controller('ResourceAdminCreateCtrl', function ($scope, $location, $routeParams, restResources, restCategories, restSubjects) {
     $scope.save = function() {
       restResources.create($scope.resource);
       $location.path('/admin/resources');
     };
+
+
+    $scope.categories = restCategories.list();
+    $scope.subjects = restSubjects.list();
 
     $scope.cancel = function () {
       $location.path('/admin/resources');

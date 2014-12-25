@@ -19,7 +19,6 @@ angular.module('dnuApp')
     };
 
     $scope.update();
-    console.log($scope.collection);
     $scope.addOne = function () {
       $scope.collection.push({id:1, title: "Faculty", src: "http://dnu.thebodva.com/upload/b32f3d1ef28edf602362b91cb935886f.jpg"});
     };

@@ -29,11 +29,13 @@ angular.module('dnuApp')
   });
 
 angular.module('dnuApp')
-  .controller('SpecialityAdminCreateCtrl', function ($scope, $location, $routeParams, restSpecialities) {
+  .controller('SpecialityAdminCreateCtrl', function ($scope, $location, $routeParams, restSpecialities, restTeachers) {
     $scope.save = function() {
       restSpecialities.create($scope.speciality);
       $location.path('/admin/specialities');
     };
+
+    $scope.supervisors = restTeachers.list();
 
     $scope.cancel = function () {
       $location.path('/admin/specialities');

@@ -1,5 +1,5 @@
 angular.module("dnuApp.directives", []);
-
+"use strict"
 angular.module("dnuApp.directives")
   .directive("bootstrapSelect", function () {
     return {

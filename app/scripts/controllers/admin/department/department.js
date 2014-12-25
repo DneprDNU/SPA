@@ -30,11 +30,14 @@ angular.module('dnuApp')
   });
 
 angular.module('dnuApp')
-  .controller('DepartmentAdminCreateCtrl', function ($scope, $location, $routeParams, restDepartments) {
+  .controller('DepartmentAdminCreateCtrl', function ($scope, $location, $routeParams, restDepartments, restSpecialities, restTeachers) {
     $scope.save = function() {
       restDepartments.create($scope.department);
       $location.path('/admin/departments');
     };
+
+    $scope.specialities = restSpecialities.list();
+    $scope.employees = restTeachers.list();
 
     $scope.cancel = function () {
       $location.path('/admin/departments');

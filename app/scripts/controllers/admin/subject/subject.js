@@ -29,11 +29,13 @@ angular.module('dnuApp')
   });
 
 angular.module('dnuApp')
-  .controller('SubjectAdminCreateCtrl', function ($scope, $location, $routeParams, restSubjects) {
+  .controller('SubjectAdminCreateCtrl', function ($scope, $location, $routeParams, restSubjects, restTeachers) {
     $scope.save = function() {
       restSubjects.create($scope.subject);
       $location.path('/admin/subjects');
     };
+
+    $scope.supervisors = restTeachers.list();
 
     $scope.cancel = function () {
       $location.path('/admin/subjects');
