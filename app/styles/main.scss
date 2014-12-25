@@ -3,6 +3,20 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
+#collections {
+  width: 20%;
+  position:absolute;
+  right:0
+}
+
+@media screen and (max-width: 1200px) {
+  #collections {
+    position: static;
+    width: 80%;
+    padding-left: 20%;
+  }
+}
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
