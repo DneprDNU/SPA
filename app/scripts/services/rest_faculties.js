@@ -12,7 +12,6 @@ angular.module('restFacultyResource', ['ngResource'])
   .factory('restFaculty', function($resource, $rootScope) {
     return $resource('http://' + $rootScope.serviceIp + ':8080/filestorage/rest/faculty/:id', {},
       {
-
         get: {
           method: 'GET'
         },

@@ -51,9 +51,25 @@ angular
         templateUrl: 'views/faculties.html',
         controller: 'FacultiesCtrl'
       })
+      .when('/departments', {
+        templateUrl: 'views/departments.html',
+        controller: 'DepartmentsCtrl'
+      })
+      .when('/subjects', {
+        templateUrl: 'views/subjects.html',
+        controller: 'SubjectsCtrl'
+      })
+      .when('/teachers', {
+        templateUrl: 'views/teachers.html',
+        controller: 'TeachersCtrl'
+      })
       .when('/resources', {
         templateUrl: 'views/resources.html',
         controller: 'ResourcesCtrl'
+      })
+      .when('/specialities', {
+        templateUrl: 'views/specialities.html',
+        controller: 'SpecialitiesCtrl'
       })
       .when('/admin', {
         templateUrl: 'views/admin_menu.html',

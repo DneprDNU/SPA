@@ -20,6 +20,7 @@ angular.module('dnuApp')
 
     $scope.faculty = restFaculty.get({id: $routeParams.id});
     $scope.departments = restDepartments.list();
+
     console.log($scope);
     // callback for ng-click 'createResource':
     $scope.createNewFaculty = function () {
@@ -30,6 +31,7 @@ angular.module('dnuApp')
 angular.module('dnuApp')
   .controller('FacultyAdminCreateCtrl', function ($scope, $location, $routeParams, restFaculties, restDepartments) {
     $scope.save = function() {
+      console.log($scope.faculty);
       restFaculties.create($scope.faculty);
       $location.path('/admin/faculties');
     };

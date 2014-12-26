@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div id="teacher" class="content-list" ng-controller="TeachersCtrl">
+        <section id="isotope-container" isotope-dnu-container>
+          <div ng-repeat="item in collection" class="teacher isotop-item" isotope-dnu-item>
+            <img src="{{ item.image }}" />
+            <p>{{ item.name }}</p>
+            <p>{{ item.description }}</p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
