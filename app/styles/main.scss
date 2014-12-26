@@ -284,8 +284,8 @@ $header-img: image-url('DNU-wide.jpg', false, false);
   margin-top: 10px;
 }
 
-#faculties {
-  .faculty {
+.content-list {
+  .isotope-item {
     width: 200px;
     height: 250px;
     margin: 15px;

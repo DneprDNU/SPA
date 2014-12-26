@@ -1,12 +1,14 @@
+"use strict";
+
 angular.module("dnuApp.directives", []);
-"use strict"
 angular.module("dnuApp.directives")
   .directive("isotopeDnuContainer", function() {
     return {
       link: function(scope, element, attrs) {
         scope.$on('LastElem', function (event) {
+          console.log('#' + element.get(0).id);
           var iso = new Isotope('#' + element.get(0).id, {
-            itemSelector: '.faculty',
+            itemSelector: '.isotope-item',
             layoutMode: 'masonry'
           });
         });
@@ -16,7 +18,7 @@ angular.module("dnuApp.directives")
   })
   .directive("isotopeDnuItem", function() {
     return function(scope, element, attrs) {
-        if (scope.$last){
+        if (scope.$last) {
           scope.$emit('LastElem');
         }
 

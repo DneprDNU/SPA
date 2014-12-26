@@ -8,7 +8,7 @@
  * Controller of the dnuApp
  */
 angular.module('dnuApp')
-  .controller('TeachersCtrl', function ($scope, $timeout, restTeachers) {
+  .controller('DepartmentsCtrl', function ($scope, $timeout, restTeachers) {
     $scope.collection = [];
     $scope.update = function () {
       restTeachers.list({}, function (data) {
@@ -20,7 +20,7 @@ angular.module('dnuApp')
 
     $scope.update();
     $scope.addOne = function () {
-      $scope.collection.push({id:1, title: "Teacher", src: "http://dnu.thebodva.com/upload/b32f3d1ef28edf602362b91cb935886f.jpg"});
+      $scope.collection.push({id:1, title: "Department", src: "http://dnu.thebodva.com/upload/b32f3d1ef28edf602362b91cb935886f.jpg"});
     };
 
   });

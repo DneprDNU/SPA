@@ -10,6 +10,7 @@
 angular.module('dnuApp')
   .controller('FacultyAdminEditCtrl', function ($scope, $location, $routeParams, restFaculty, restDepartments) {
     $scope.save = function() {
+      console.log($scope.faculty);
       restFaculty.update($scope.faculty);
       $location.path('/admin/faculties');
     };
