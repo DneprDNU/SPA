@@ -25,3 +25,10 @@ angular.module('dnuApp')
 
   });
 
+angular.module('dnuApp')
+  .controller('SpecialityCtrl', function ($scope, $routeParams, restSpeciality, restFaculty) {
+    $scope.speciality = restSpeciality.get({id: $routeParams.id, facultyId: $routeParams.facultyId});
+    $scope.faculty = restFaculty.get({id: $routeParams.facultyId});
+    $scope.subjects = [];
+    $scope.teachers = $scope.speciality.supervisors;
+  });

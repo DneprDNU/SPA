@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
-      <div id="faculties" class="content-list" ng-controller="FacultiesCtrl">
+      <div id="faculties" class="content-list" ng-controller="SubjectCtrl">
         <section id="isotope-container" isotope-dnu-container>
-          <div ng-repeat="item in collection" class="faculty isotope-item" isotope-dnu-item>
-            <a ng-href="/#/faculty/{{ item.id }}">
+          <div ng-repeat="item in subject.resources" class="faculty isotope-item" isotope-dnu-item>
+            <a ng-href="/#/resource/{{ item.id }}">
               <img src="{{ item.image }}" />
               <p>{{ item.name }}</p>
               <p>{{ item.description }}</p>

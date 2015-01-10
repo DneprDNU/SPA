@@ -25,3 +25,7 @@ angular.module('dnuApp')
 
   });
 
+angular.module('dnuApp')
+  .controller('SubjectCtrl', function ($scope, $routeParams, restSubject) {
+    $scope.subject = restSubject.get({id: $routeParams.id});
+  });

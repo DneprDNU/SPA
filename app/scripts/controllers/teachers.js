@@ -25,3 +25,9 @@ angular.module('dnuApp')
 
   });
 
+angular.module('dnuApp')
+  .controller('TeacherCtrl', function ($scope, $timeout, restTeacher) {
+    $scope.teacher = restTeacher.get({id: $routeParams.id});
+    $scope.resources = [];
+  });
+

@@ -25,3 +25,12 @@ angular.module('dnuApp')
 
   });
 
+angular.module('dnuApp')
+  .controller('DepartmentCtrl', function ($scope, $timeout, $routeParams, restDepartment, restSubjects, restTeachers, restFaculty) {
+    $scope.department = restDepartment.get({id: $routeParams.id});
+    $scope.faculty = restFaculty.get({id: $routeParams.facultyId});
+    $scope.subjects = restSubjects({'departmentId': $routeParams.id});
+    $scope.specialities = $scope.department.specialities;
+    $scope.teachers = $scope.department.employees;
+    console.log($scope);
+  });

@@ -1,0 +1,20 @@
+<div ng-controller="ResourceCtrl">
+  <dl>
+    <dt>Викладач</dt>
+    <dd>{{ resource.author }}</dd>
+    <dt>Предмет</dt>
+    <dd>{{ resource.subjects[0].name }}</dd>
+    <dt>Рік видання</dt>
+    <dd>{{ resource.year }}</dd>
+    <dt>Автор</dt>
+    <dd>{{ resource.author }}</dd>
+    <dt>Тип</dt>
+    <dd>Книга</dd>
+    <dt>Спеціальність</dt>
+    <dd>{{ resource.subjects[0].name }}</dd>
+    <dt>Опис</dt>
+    <dd>{{ resource.description }}</dd>
+    <dt>Зкачати</dt>
+    <dd><a href="{{ resource.resourceURL }}">{{ resource.resourceURL }}</a></dd>
+  </dl>
+</div>

@@ -17,6 +17,7 @@ angular
     'ngSanitize',
     'ngTouch',
     'restAuth',
+    'ui.bootstrap',
     'restFacultyResource',
     'restCategoryResource',
     'restDepartmentResource',
@@ -51,9 +52,17 @@ angular
         templateUrl: 'views/faculties.html',
         controller: 'FacultiesCtrl'
       })
+      .when('/faculty/:id', {
+        templateUrl: 'views/faculty.html',
+        controller: 'FacultyCtrl'
+      })
       .when('/departments', {
         templateUrl: 'views/departments.html',
         controller: 'DepartmentsCtrl'
+      })
+      .when('/faculty/:facultyId/department/:id', {
+        templateUrl: 'views/department.html',
+        controller: 'DepartmentCtrl'
       })
       .when('/subjects', {
         templateUrl: 'views/subjects.html',
@@ -67,9 +76,17 @@ angular
         templateUrl: 'views/resources.html',
         controller: 'ResourcesCtrl'
       })
+      .when('/resource/:id', {
+        templateUrl: 'views/resource.html',
+        controller: 'ResourcesCtrl'
+      })
       .when('/specialities', {
         templateUrl: 'views/specialities.html',
         controller: 'SpecialitiesCtrl'
+      })
+      .when('/faculty/:facultyId/speciality/:id', {
+        templateUrl: 'views/speciality.html',
+        controller: 'SpecialityCtrl'
       })
       .when('/admin', {
         templateUrl: 'views/admin_menu.html',
