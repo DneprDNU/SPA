@@ -10,7 +10,6 @@
 angular.module('dnuApp')
   .controller('FacultyAdminEditCtrl', function ($scope, $location, $routeParams, restFaculty, restDepartments) {
     $scope.save = function() {
-      console.log($scope.faculty);
       restFaculty.update($scope.faculty);
       $location.path('/admin/faculties');
     };
@@ -22,7 +21,6 @@ angular.module('dnuApp')
     $scope.faculty = restFaculty.get({id: $routeParams.id});
     $scope.departments = restDepartments.list();
 
-    console.log($scope);
     // callback for ng-click 'createResource':
     $scope.createNewFaculty = function () {
       $location.path('/admin/faculty');
@@ -32,7 +30,6 @@ angular.module('dnuApp')
 angular.module('dnuApp')
   .controller('FacultyAdminCreateCtrl', function ($scope, $location, $routeParams, restFaculties, restDepartments) {
     $scope.save = function() {
-      console.log($scope.faculty);
       restFaculties.create($scope.faculty);
       $location.path('/admin/faculties');
     };

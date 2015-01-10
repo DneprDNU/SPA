@@ -23,6 +23,7 @@ angular
     'restCategoryResource',
     'restDepartmentResource',
     'restSpecialityResource',
+    'restSearchResource',
     'restSubjectResource',
     'restTeacherResource',
     'restResourceResource',
@@ -72,6 +73,9 @@ angular
       .when('/teachers', {
         templateUrl: 'views/teachers.html',
         controller: 'TeachersCtrl'
+      })
+      .when('/free-resources', {
+        templateUrl: 'views/free-resources.html'
       })
       .when('/resources', {
         templateUrl: 'views/resources.html',

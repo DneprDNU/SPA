@@ -34,7 +34,7 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Головна</a></li>
             <li><a href="#faculties">Факультети</a></li>
-            <li><a href="#resources">Відкриті ресурси</a></li>
+            <li><a href="#free-resources">Відкриті ресурси</a></li>
             <li><a href="#login">Авторізація</a></li>
             <li><a href="#about">Інформація</a></li>
             <li><a href="#admin">Адмiнiстрування</a></li>
@@ -53,14 +53,14 @@
       </div>
     </div>
 
-    <div class="container">
+    <div class="container" ng-controller="SearchCtrl">
       <form class="form-inline" role="search">
         <div class="row">
 
           <div class="col-xs-8">
-            <input type="text" class="form-control" placeholder="Шукати" style="width:100%">
+            <input type="text" class="form-control" placeholder="Шукати" ng-model="searchKey" style="width:100%">
           </div>
-          <button type="submit" class="btn btn-primary col-xs-4">Пошук</button>
+          <button type="submit" class="btn btn-primary col-xs-4" ng-click="search()">Пошук</button>
         </div>
 
       </form>
@@ -240,6 +240,7 @@
         <script src="scripts/controllers/departments.js"></script>
         <script src="scripts/controllers/teachers.js"></script>
         <script src="scripts/controllers/subjects.js"></script>
+        <script src="scripts/controllers/search.js"></script>
         <script src="scripts/controllers/adminMenu.js"></script>
         <script src="scripts/controllers/admin/faculty/faculty-list.js"></script>
         <script src="scripts/controllers/admin/faculty/faculty.js"></script>
@@ -259,6 +260,7 @@
         <script src="scripts/services/rest_faculties.js"></script>
         <script src="scripts/services/rest_resources.js"></script>
         <script src="scripts/services/rest_categories.js"></script>
+        <script src="scripts/services/rest_search.js"></script>
         <script src="scripts/services/rest_departments.js"></script>
         <script src="scripts/services/rest_specialities.js"></script>
         <script src="scripts/services/rest_subjects.js"></script>

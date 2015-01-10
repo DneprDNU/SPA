@@ -8,8 +8,13 @@
  * Controller of the angularApp
  */
 angular.module('dnuApp')
-  .controller('ResourcesCtrl', function ($scope, restResources) {
-    $scope.resources = restResources.list();
+  .controller('ResourcesCtrl', function ($scope, $routeParams, restSearch, restResources) {
+    if ($routeParams.search !== undefined) {
+      $scope.resources = restSearch.search({searchKey: $routeParams.search});
+    }
+    else {
+      $scope.resources = restResources.list();
+    }
   });
 
 angular.module('dnuApp')
