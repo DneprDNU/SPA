@@ -17,7 +17,10 @@ angular.module('restResourceResource', ['ngResource'])
         },
         update: {
           method: 'PUT',
-          params: {id: '@id'}
+          params: {id: '@id'},
+          headers: {
+            'Content-Type': undefined
+          }
         },
         delete: {
           method: 'DELETE'

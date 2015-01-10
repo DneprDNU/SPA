@@ -27,7 +27,7 @@
   </div>
   <div class="form-group">
     <label for="resource-file">File input</label>
-    <input type="file" ng-file-select ng-model="resourceFile" name="file" required>
+    <input type="file" id="resource-file" ng-model="resource.image" ng-file-select ng-multiple="false" ng-file-change="fileSelected($files, $event)" name="file" required>
     <p class="help-block">Upload resource image.</p>
   </div>
   <div class="control-group">
