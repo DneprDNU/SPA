@@ -51,24 +51,25 @@ angular.module('dnuApp')
 angular.module('dnuApp')
   .controller('ResourceAdminCreateCtrl', function ($scope, $location, $routeParams, restResources, restCategories, restSubjects) {
     $scope.save = function() {
-      if ($scope.resource.image[0] !== undefined) {
-        var imageFile = $scope.resource.image[0];
+      if ($scope.resource.image[0] !== undefined || $scope.resource.file[0]) {
+        var files = [];
+
+        if ($scope.resource.image[0] !== undefined) {
+          files.push($scope.resource.image[0]);
+        }
+        if ($scope.resource.file[0] !== undefined) {
+          files.push($scope.resource.file[0]);
+        }
+
         $scope.upload = $upload.upload({
           url: 'http://' + $rootScope.serviceIp + ':8080/filestorage/rest/resource/' + $routeParams.id,
           method: 'POST',
           data: {resource: $scope.resource},
-          file: imageFile
+          file: files
         });
       }
-
-      if ($scope.resource.file[0] !== undefined) {
-        var resourceFile = $scope.resource.file[0];
-        $scope.upload = $upload.upload({
-          url: 'http://' + $rootScope.serviceIp + ':8080/filestorage/rest/resource/' + $routeParams.id,
-          method: 'POST',
-          data: {resource: $scope.resource},
-          file: resourceFile
-        });
+      else {
+        restResources.create($scope.resource);
       }
 
       $location.path('/admin/resources');
