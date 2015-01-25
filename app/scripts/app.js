@@ -27,6 +27,7 @@ angular
     'restSubjectResource',
     'restTeacherResource',
     'restResourceResource',
+    'restFreeResourceResource',
     'dnuApp.directives'
   ])
   .run(function($rootScope) {
@@ -77,8 +78,8 @@ angular
       .when('/free-resources', {
         templateUrl: 'views/free-resources.html'
       })
-      .when('/resources', {
-        templateUrl: 'views/resources.html',
+      .when('/free-resources', {
+        templateUrl: 'views/free-resources.html',
         controller: 'ResourcesCtrl'
       })
       .when('/resource/:id', {
@@ -132,6 +133,18 @@ angular
       .when('/admin/resource/:id', {
         templateUrl: 'views/admin/resource/resource.html',
         controller: 'ResourceAdminEditCtrl'
+      })
+      .when('/admin/free-resources', {
+        templateUrl: 'views/admin/free-resource/free-resources.html',
+        controller: 'FreeResourceAdminListCtrl'
+      })
+      .when('/admin/free-resource', {
+        templateUrl: 'views/admin/free-resource/free-resource.html',
+        controller: 'FreeResourceAdminCreateCtrl'
+      })
+      .when('/admin/free-resource/:id', {
+        templateUrl: 'views/admin/free-resource/free-resource.html',
+        controller: 'FreeResourceAdminEditCtrl'
       })
       .when('/admin/teachers', {
         templateUrl: 'views/admin/teacher/teachers.html',
