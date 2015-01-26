@@ -49,7 +49,7 @@ angular.module('dnuApp')
   });
 
 angular.module('dnuApp')
-  .controller('ResourceAdminCreateCtrl', function ($scope, $location, $routeParams, restResources, restCategories, restSubjects) {
+  .controller('ResourceAdminCreateCtrl', function ($scope, $rootScope, $location, $routeParams, $upload, restResources, restCategories, restSubjects) {
     $scope.save = function() {
       if ($scope.resource.image[0] !== undefined || $scope.resource.file[0]) {
         var files = [];
@@ -62,10 +62,11 @@ angular.module('dnuApp')
         }
 
         $scope.upload = $upload.upload({
-          url: 'http://' + $rootScope.serviceIp + ':8080/filestorage/rest/resource/' + $routeParams.id,
+          url: 'http://' + $rootScope.serviceIp + ':8080/filestorage/rest/resource/',
           method: 'POST',
           data: {resource: $scope.resource},
-          file: files
+          file: files,
+          fileFormDataName: ['image', 'file']
         });
       }
       else {
