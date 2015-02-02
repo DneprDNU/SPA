@@ -1,25 +1,25 @@
 <form role="form">
   <div class="form-group">
-    <label for="name">Name</label>
-    <input type="text" class="form-control" id="name" placeholder="Enter name" ng-model="freeResource.name">
+    <label for="name">Назва</label>
+    <input type="text" class="form-control" id="name" placeholder="Введіть назву" ng-model="freeResource.name">
   </div>
   <div class="form-group">
-    <label for="description">Description</label>
-    <textarea class="form-control" id="description" placeholder="Enter description" ng-model="freeResource.description"></textarea>
+    <label for="description">Опис</label>
+    <textarea class="form-control" id="description" placeholder="Введіть опис" ng-model="freeResource.description"></textarea>
   </div>
   <div class="form-group">
-    <label for="categories">Categories</label>
+    <label for="categories">Категорії</label>
     <select id="categories" ng-options="item.id as item.name for item in categories track by item.id" ng-model="freeResource.categories" multiple bootstrap-select>
     </select>
   </div>
   <div class="form-group">
-    <label for="resource">Url</label>
-    <input type="text" class="form-control" id="resource" placeholder="Enter url" ng-model="freeResource.resource">
+    <label for="resource">Адреса посилання</label>
+    <input type="text" class="form-control" id="resource" placeholder="Введіть посилання" ng-model="freeResource.resource">
   </div>
   <div class="control-group">
     <div class="controls">
-      <a ng-click="cancel()" class="btn btn-small">cancel</a>
-      <a ng-click="save()" class="btn btn-small btn-primary">Save free resource</a>
+      <a ng-click="cancel()" class="btn btn-small">Відміна</a>
+      <a ng-click="save()" class="btn btn-small btn-primary">Сберегти ресурс</a>
     </div>
   </div>
 </form>

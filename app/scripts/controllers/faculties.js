@@ -19,7 +19,10 @@ angular.module('dnuApp')
 
     $scope.update();
     $scope.addOne = function () {
-      $scope.collection.push({id:1, title: "Faculty", src: "http://dnu.thebodva.com/upload/b32f3d1ef28edf602362b91cb935886f.jpg"});
+      $scope.collection.push({
+        id:1,
+        title: "Faculty",
+        src: "http://dnu.thebodva.com/upload/b32f3d1ef28edf602362b91cb935886f.jpg"});
     };
   });
 
@@ -28,6 +31,4 @@ angular.module('dnuApp')
     $scope.faculty = restFaculty.get({id: $routeParams.id});
     $scope.departments = $scope.faculty.departments;
     $scope.specialities = restSpecialities.list({'facultyId': $routeParams.id});
-
-    console.log($scope);
   });

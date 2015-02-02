@@ -1,278 +1,279 @@
 <!doctype html>
 <html class="no-js">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(.) styles/vendor.css -->
-    <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap-select/dist/css/bootstrap-select.css" />
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="bower_components/bootstrap-select/dist/css/bootstrap-select.min.css">
-    <!-- endbuild -->
-  </head>
-  <body ng-app="dnuApp">
-    <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css(.) styles/vendor.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/bootstrap-select/dist/css/bootstrap-select.css" />
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:css(.tmp) styles/main.css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="bower_components/bootstrap-select/dist/css/bootstrap-select.min.css">
+  <!-- endbuild -->
+</head>
+<body ng-app="dnuApp">
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+  your browser</a> to improve your experience.</p>
+<![endif]-->
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Головна</a></li>
-            <li><a href="#faculties">Факультети</a></li>
-            <li><a href="#free-resources">Відкриті ресурси</a></li>
-            <li><a href="#login">Авторізація</a></li>
-            <li><a href="#about">Інформація</a></li>
-            <li><a href="#admin">Адмiнiстрування</a></li>
-          </ul>
-        </div>
-      </div>
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
     </div>
-
-    <div class="wide">
-      <div class="col-xs-5 line">
-        <hr>
-      </div>
-      <div class="col-xs-2 logo">Logo</div>
-      <div class="col-xs-5 line">
-        <hr>
-      </div>
-    </div>
-
-    <div class="container" ng-controller="SearchCtrl">
-      <form class="form-inline" role="search">
-        <div class="row">
-
-          <div class="col-xs-8">
-            <input type="text" class="form-control" placeholder="Шукати" ng-model="searchKey" style="width:100%">
-          </div>
-          <button type="submit" class="btn btn-primary col-xs-4" ng-click="search()">Пошук</button>
-        </div>
-
-      </form>
-    </div>
-
-    <div ng-controller="CategoriesListCtrl"></div>
-
-    <div id="collections" data-spy="affix" data-offset-top="350" ng-controller="LastResourcesCtrl">
-      <h3>Колекції</h3>
-      <ul class="list-group">
-        <li class="list-group-item" ng-repeat="link in resources">
-          <a ng-href="/#/resource/{{ link.id }}">
-            {{ link.name }}
-          </a>
-        </li>
-      <li class="list-group-item"><a href="http://dnu.thebodva.com/inner/c1">
-        Навчальні матеріали [11]
-      </a></li>
-
-      <li class="list-group-item"><a href="http://dnu.thebodva.com/inner/c6">
-        Дисертації [1]
-      </a></li>
-
-      <li class="list-group-item"><a href="http://dnu.thebodva.com/inner/c7">
-        Автореферати дисертацій [1]
-      </a></li>
-
-      <li class="list-group-item"><a href="http://dnu.thebodva.com/inner/c8">
-        Матеріали конференцій [1]
-      </a></li>
-
-      <li class="list-group-item"><a href="http://dnu.thebodva.com/inner/c9">
-        Науково-періодичні видання ДНУ [1]
-      </a></li>
-
-      <li class="list-group-item"><a href="http://dnu.thebodva.com/inner/c10">
-        Монографії співробітників університету [1]
-      </a></li>
-
-      <li class="list-group-item"><a href="http://dnu.thebodva.com/inner/c11">
-        Стаття [3]
-      </a></li>
-
-      <li class="list-group-item"><a href="http://dnu.thebodva.com/inner/c12">
-        Книга [6]
-      </a></li>
-
-      <li class="list-group-item"><a href="http://dnu.thebodva.com/inner/c13">
-        Патент [1]
-      </a></li>
-
-      <li class="list-group-item"><a href="http://dnu.thebodva.com/inner/c15">
-        Презентація [4]
-      </a></li>
-
-      <li class="list-group-item"><a href="http://dnu.thebodva.com/inner/c16">
-        Методична розробка [9]
-      </a></li>
-
-      <li class="list-group-item"><a href="http://dnu.thebodva.com/inner/c17">
-        Конспект лекцій [27]
-      </a></li>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Головна</a></li>
+        <li><a href="#faculties">Факультети</a></li>
+        <li><a href="#free-resources">Відкриті ресурси</a></li>
+        <li><a href="#login">Авторізація</a></li>
+        <li><a href="#about">Інформація</a></li>
+        <li><a href="#admin">Адмiнiстрування</a></li>
       </ul>
     </div>
+  </div>
+</div>
 
-    <!-- Add your site or application content here -->
-    <div class="container">
-      <div ng-view=""></div>
+<div class="wide">
+  <div class="col-xs-5 line">
+    <hr>
+  </div>
+  <div class="col-xs-2 logo">Logo</div>
+  <div class="col-xs-5 line">
+    <hr>
+  </div>
+</div>
 
-      <footer id="footer" class="footer">
-        <div class="row">
-          <div class="col-xs-6 col-sm-2">
-            <a href="http://www.mon.gov.ua" target="_blank"><img src="http://www.dnu.dp.ua/images/mon_banner.jpg"
-                                                                 class="banner" height="45"
-                                                                 title="Мiнiстерство освiти i науки, молодi та спорту УкраЇни"
-                                                                 alt="МОН"></a></div>
-          <div class="col-xs-6 col-sm-2">
-            <a href="http://www.guds.gov.ua" target="_blank"><img src="http://www.dnu.dp.ua/images/guds.gif" class="banner"
-                                                                  height="45" title="Головне управління державної служби"
-                                                                  alt="ГУДС"></a>
-          </div>
-          <div class="col-xs-6 col-sm-2">
-            <a href="http://www.rudn.ru" target="_blank"><img src="http://www.dnu.dp.ua/images/rudn.gif" class="banner"
-                                                              height="45" title="Российский Университет Дружбы Народов"
-                                                              alt="РУДН"></a>
-          </div>
-          <div class="col-xs-6 col-sm-2">
-            <a href="http://dnulang.at.ua" target="_blank"><img src="http://www.dnu.dp.ua/images/langcourses.jpg"
-                                                                class="banner" height="45"
-                                                                title="Курси інтенсивного навчання іноземних мов"
-                                                                alt="Курси інтенсивного навчання іноземних мов"></a>
-          </div>
-          <div class="col-xs-6 col-sm-2">
-            <a href="http://www.dnu.dp.ua/view/noviy_dnipropetrovshchini"><img
-                src="http://www.dnu.dp.ua/images/noviydnepr.gif" class="banner" height="45"
-                title="Новій Дніпропетровщині - новий стандарт освіти" alt="Новій Дніпропетровщині - новий стандарт освіти"></a>
-          </div>
-          <div class="col-xs-6 col-sm-2">
-            <a href="http://ndipit.com.ua/rozrobky/asu-vnz" target="_blank"><img
-                src="http://www.dnu.dp.ua/images/asu_banner2.jpg" class="banner" height="45"
-                title="Ми користуємося автоматизованною системою управління вищим навчальним закладом АСУ ВНЗ"
-                alt="Ми користуємося автоматизованною системою управління вищим навчальним закладом АСУ ВНЗ"></a>
-          </div>
-        </div>
-        <div class="row" style="margin-top:40px">
-          <div class="col-xs-6 col-sm-3">
-            <a href="https://mail.dsu.dp.ua/webmail">Поштова служба</a>
-          </div>
-          <div class="col-xs-6 col-sm-6">
-            <a href="http://mail.dsu.dp.ua/phprojekt">Система електронного документообігу</a>
-          </div>
-          <div class="col-xs-6 col-sm-3">
-            <a href="http://rating.dsu.dp.ua:2000">Рейтинг викладача</a>
-          </div>
-        </div>
-      </footer>
+<div class="container" ng-controller="SearchCtrl">
+  <form class="form-inline" role="search">
+    <div class="row">
+
+      <div class="col-xs-8">
+        <input type="text" class="form-control" placeholder="Шукати" ng-model="searchKey" style="width:100%">
+      </div>
+      <button type="submit" class="btn btn-primary col-xs-4" ng-click="search()">Пошук</button>
     </div>
 
-    <!-- build:js(.) scripts/oldieshim.js -->
-    <!--[if lt IE 9]>
-    <script src="bower_components/es5-shim/es5-shim.js"></script>
-    <script src="bower_components/json3/lib/json3.js"></script>
-    <![endif]-->
-    <!-- endbuild -->
+  </form>
+</div>
 
-    <!-- build:js(.) scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/affix.js"></script>
-    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/alert.js"></script>
-    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/button.js"></script>
-    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/carousel.js"></script>
-    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/collapse.js"></script>
-    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/dropdown.js"></script>
-    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tab.js"></script>
-    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/transition.js"></script>
-    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/scrollspy.js"></script>
-    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/modal.js"></script>
-    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tooltip.js"></script>
-    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/popover.js"></script>
-    <script src="bower_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-touch/angular-touch.js"></script>
-    <script src="bower_components/get-style-property/get-style-property.js"></script>
-    <script src="bower_components/get-size/get-size.js"></script>
-    <script src="bower_components/matches-selector/matches-selector.js"></script>
-    <script src="bower_components/eventie/eventie.js"></script>
-    <script src="bower_components/doc-ready/doc-ready.js"></script>
-    <script src="bower_components/eventEmitter/EventEmitter.js"></script>
-    <script src="bower_components/outlayer/item.js"></script>
-    <script src="bower_components/outlayer/outlayer.js"></script>
-    <script src="bower_components/masonry/masonry.js"></script>
-    <script src="bower_components/isotope/js/item.js"></script>
-    <script src="bower_components/isotope/js/layout-mode.js"></script>
-    <script src="bower_components/isotope/js/isotope.js"></script>
-    <script src="bower_components/isotope/js/layout-modes/vertical.js"></script>
-    <script src="bower_components/isotope/js/layout-modes/fit-rows.js"></script>
-    <script src="bower_components/isotope/js/layout-modes/masonry.js"></script>
-    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <script src="bower_components/ng-file-upload/angular-file-upload.js"></script>
-    <script src="bower_components/ng-file-upload-shim/angular-file-upload-shim.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
+<div ng-controller="CategoriesListCtrl"></div>
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
-        <script src="scripts/controllers/contact.js"></script>
-        <script src="scripts/controllers/categories.js"></script>
-        <script src="scripts/controllers/login.js"></script>
-        <script src="scripts/controllers/free-resources.js"></script>
-        <script src="scripts/controllers/faculties.js"></script>
-        <script src="scripts/controllers/specialities.js"></script>
-        <script src="scripts/controllers/departments.js"></script>
-        <script src="scripts/controllers/teachers.js"></script>
-        <script src="scripts/controllers/subjects.js"></script>
-        <script src="scripts/controllers/search.js"></script>
-        <script src="scripts/controllers/adminMenu.js"></script>
-        <script src="scripts/controllers/admin/faculty/faculty-list.js"></script>
-        <script src="scripts/controllers/admin/faculty/faculty.js"></script>
-        <script src="scripts/controllers/admin/resource/resource-list.js"></script>
-        <script src="scripts/controllers/admin/resource/resource.js"></script>
-        <script src="scripts/controllers/admin/free_resource/free-resource-list.js"></script>
-        <script src="scripts/controllers/admin/free_resource/free-resource.js"></script>
-        <script src="scripts/controllers/admin/category/category-list.js"></script>
-        <script src="scripts/controllers/admin/category/category.js"></script>
-        <script src="scripts/controllers/admin/teacher/teacher.js"></script>
-        <script src="scripts/controllers/admin/teacher/teacher-list.js"></script>
-        <script src="scripts/controllers/admin/subject/subject.js"></script>
-        <script src="scripts/controllers/admin/subject/subject-list.js"></script>
-        <script src="scripts/controllers/admin/speciality/speciality.js"></script>
-        <script src="scripts/controllers/admin/speciality/speciality-list.js"></script>
-        <script src="scripts/controllers/admin/department/department.js"></script>
-        <script src="scripts/controllers/admin/department/department-list.js"></script>
-        <script src="scripts/services/rest_auth.js"></script>
-        <script src="scripts/services/rest_faculties.js"></script>
-        <script src="scripts/services/rest_free_resources.js"></script>
-        <script src="scripts/services/rest_resources.js"></script>
-        <script src="scripts/services/rest_categories.js"></script>
-        <script src="scripts/services/rest_search.js"></script>
-        <script src="scripts/services/rest_departments.js"></script>
-        <script src="scripts/services/rest_specialities.js"></script>
-        <script src="scripts/services/rest_subjects.js"></script>
-        <script src="scripts/services/rest_teachers.js"></script>
-        <script src="scripts/directives/dnu_isotope.js"></script>
-        <script src="scripts/directives/bootstrap-select.js"></script>
-        <!-- endbuild -->
+<div id="collections" data-spy="affix" data-offset-top="350" ng-controller="LastResourcesCtrl">
+  <h3>Колекції</h3>
+  <ul class="list-group">
+    <!--<li class="list-group-item" ng-repeat="link in resources">-->
+      <!--<a ng-href="/#/resource/{{ link.id }}">-->
+        <!--{{ link.name }}-->
+      <!--</a>-->
+    <!--</li>-->
+    <li class="list-group-item"><a href="http://dnu.thebodva.com/inner/c1">
+      Навчальні матеріали [11]
+    </a></li>
+
+    <li class="list-group-item"><a href="http://dnu.thebodva.com/inner/c6">
+      Дисертації [1]
+    </a></li>
+
+    <li class="list-group-item"><a href="http://dnu.thebodva.com/inner/c7">
+      Автореферати дисертацій [1]
+    </a></li>
+
+    <li class="list-group-item"><a href="http://dnu.thebodva.com/inner/c8">
+      Матеріали конференцій [1]
+    </a></li>
+
+    <li class="list-group-item"><a href="http://dnu.thebodva.com/inner/c9">
+      Науково-періодичні видання ДНУ [1]
+    </a></li>
+
+    <li class="list-group-item"><a href="http://dnu.thebodva.com/inner/c10">
+      Монографії співробітників університету [1]
+    </a></li>
+
+    <li class="list-group-item"><a href="http://dnu.thebodva.com/inner/c11">
+      Стаття [3]
+    </a></li>
+
+    <li class="list-group-item"><a href="http://dnu.thebodva.com/inner/c12">
+      Книга [6]
+    </a></li>
+
+    <li class="list-group-item"><a href="http://dnu.thebodva.com/inner/c13">
+      Патент [1]
+    </a></li>
+
+    <li class="list-group-item"><a href="http://dnu.thebodva.com/inner/c15">
+      Презентація [4]
+    </a></li>
+
+    <li class="list-group-item"><a href="http://dnu.thebodva.com/inner/c16">
+      Методична розробка [9]
+    </a></li>
+
+    <li class="list-group-item"><a href="http://dnu.thebodva.com/inner/c17">
+      Конспект лекцій [27]
+    </a></li>
+  </ul>
+</div>
+
+<!-- Add your site or application content here -->
+<div class="container">
+  <div ng-view=""></div>
+
+  <footer id="footer" class="footer">
+    <div class="row">
+      <div class="col-xs-6 col-sm-2">
+        <a href="http://www.mon.gov.ua" target="_blank"><img src="http://www.dnu.dp.ua/images/mon_banner.jpg"
+                                                             class="banner" height="45"
+                                                             title="Мiнiстерство освiти i науки, молодi та спорту УкраЇни"
+                                                             alt="МОН"></a></div>
+      <div class="col-xs-6 col-sm-2">
+        <a href="http://www.guds.gov.ua" target="_blank"><img src="http://www.dnu.dp.ua/images/guds.gif" class="banner"
+                                                              height="45" title="Головне управління державної служби"
+                                                              alt="ГУДС"></a>
+      </div>
+      <div class="col-xs-6 col-sm-2">
+        <a href="http://www.rudn.ru" target="_blank"><img src="http://www.dnu.dp.ua/images/rudn.gif" class="banner"
+                                                          height="45" title="Российский Университет Дружбы Народов"
+                                                          alt="РУДН"></a>
+      </div>
+      <div class="col-xs-6 col-sm-2">
+        <a href="http://dnulang.at.ua" target="_blank"><img src="http://www.dnu.dp.ua/images/langcourses.jpg"
+                                                            class="banner" height="45"
+                                                            title="Курси інтенсивного навчання іноземних мов"
+                                                            alt="Курси інтенсивного навчання іноземних мов"></a>
+      </div>
+      <div class="col-xs-6 col-sm-2">
+        <a href="http://www.dnu.dp.ua/view/noviy_dnipropetrovshchini"><img
+            src="http://www.dnu.dp.ua/images/noviydnepr.gif" class="banner" height="45"
+            title="Новій Дніпропетровщині - новий стандарт освіти" alt="Новій Дніпропетровщині - новий стандарт освіти"></a>
+      </div>
+      <div class="col-xs-6 col-sm-2">
+        <a href="http://ndipit.com.ua/rozrobky/asu-vnz" target="_blank"><img
+            src="http://www.dnu.dp.ua/images/asu_banner2.jpg" class="banner" height="45"
+            title="Ми користуємося автоматизованною системою управління вищим навчальним закладом АСУ ВНЗ"
+            alt="Ми користуємося автоматизованною системою управління вищим навчальним закладом АСУ ВНЗ"></a>
+      </div>
+    </div>
+    <div class="row" style="margin-top:40px">
+      <div class="col-xs-6 col-sm-3">
+        <a href="https://mail.dsu.dp.ua/webmail">Поштова служба</a>
+      </div>
+      <div class="col-xs-6 col-sm-6">
+        <a href="http://mail.dsu.dp.ua/phprojekt">Система електронного документообігу</a>
+      </div>
+      <div class="col-xs-6 col-sm-3">
+        <a href="http://rating.dsu.dp.ua:2000">Рейтинг викладача</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- build:js(.) scripts/oldieshim.js -->
+<!--[if lt IE 9]>
+<script src="bower_components/es5-shim/es5-shim.js"></script>
+<script src="bower_components/json3/lib/json3.js"></script>
+<![endif]-->
+<!-- endbuild -->
+
+<!-- build:js(.) scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/affix.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/alert.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/button.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/carousel.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/collapse.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/dropdown.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tab.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/transition.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/scrollspy.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/modal.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tooltip.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/popover.js"></script>
+<script src="bower_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-touch/angular-touch.js"></script>
+<script src="bower_components/get-style-property/get-style-property.js"></script>
+<script src="bower_components/get-size/get-size.js"></script>
+<script src="bower_components/matches-selector/matches-selector.js"></script>
+<script src="bower_components/eventie/eventie.js"></script>
+<script src="bower_components/doc-ready/doc-ready.js"></script>
+<script src="bower_components/eventEmitter/EventEmitter.js"></script>
+<script src="bower_components/outlayer/item.js"></script>
+<script src="bower_components/outlayer/outlayer.js"></script>
+<script src="bower_components/masonry/masonry.js"></script>
+<script src="bower_components/isotope/js/item.js"></script>
+<script src="bower_components/isotope/js/layout-mode.js"></script>
+<script src="bower_components/isotope/js/isotope.js"></script>
+<script src="bower_components/isotope/js/layout-modes/vertical.js"></script>
+<script src="bower_components/isotope/js/layout-modes/fit-rows.js"></script>
+<script src="bower_components/isotope/js/layout-modes/masonry.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="bower_components/ng-file-upload/angular-file-upload.js"></script>
+<script src="bower_components/ng-file-upload-shim/angular-file-upload-shim.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+<script src="scripts/app.js"></script>
+<script src="scripts/controllers/main.js"></script>
+<script src="scripts/controllers/about.js"></script>
+<script src="scripts/controllers/contact.js"></script>
+<script src="scripts/controllers/categories.js"></script>
+<script src="scripts/controllers/login.js"></script>
+<script src="scripts/controllers/free-resources.js"></script>
+<script src="scripts/controllers/faculties.js"></script>
+<script src="scripts/controllers/specialities.js"></script>
+<script src="scripts/controllers/departments.js"></script>
+<script src="scripts/controllers/teachers.js"></script>
+<script src="scripts/controllers/subjects.js"></script>
+<script src="scripts/controllers/search.js"></script>
+<script src="scripts/controllers/adminMenu.js"></script>
+<script src="scripts/controllers/admin/faculty/faculty-list.js"></script>
+<script src="scripts/controllers/admin/faculty/faculty.js"></script>
+<script src="scripts/controllers/admin/resource/resource-list.js"></script>
+<script src="scripts/controllers/admin/resource/resource.js"></script>
+<script src="scripts/controllers/admin/free_resource/free-resource-list.js"></script>
+<script src="scripts/controllers/admin/free_resource/free-resource.js"></script>
+<script src="scripts/controllers/admin/category/category-list.js"></script>
+<script src="scripts/controllers/admin/category/category.js"></script>
+<script src="scripts/controllers/admin/teacher/teacher.js"></script>
+<script src="scripts/controllers/admin/teacher/teacher-list.js"></script>
+<script src="scripts/controllers/admin/subject/subject.js"></script>
+<script src="scripts/controllers/admin/subject/subject-list.js"></script>
+<script src="scripts/controllers/admin/speciality/speciality.js"></script>
+<script src="scripts/controllers/admin/speciality/speciality-list.js"></script>
+<script src="scripts/controllers/admin/department/department.js"></script>
+<script src="scripts/controllers/admin/department/department-list.js"></script>
+<script src="scripts/services/rest_auth.js"></script>
+<script src="scripts/services/rest_faculties.js"></script>
+<script src="scripts/services/rest_free_resources.js"></script>
+<script src="scripts/services/rest_resources.js"></script>
+<script src="scripts/services/rest_categories.js"></script>
+<script src="scripts/services/rest_search.js"></script>
+<script src="scripts/services/rest_departments.js"></script>
+<script src="scripts/services/rest_specialities.js"></script>
+<script src="scripts/services/rest_subjects.js"></script>
+<script src="scripts/services/rest_teachers.js"></script>
+<script src="scripts/directives/dnu_isotope.js"></script>
+<script src="scripts/directives/bootstrap-select.js"></script>
+<!-- endbuild -->
 </body>
 </html>
