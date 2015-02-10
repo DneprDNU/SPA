@@ -10,7 +10,27 @@
 angular.module('dnuApp')
   .controller('FacultyAdminEditCtrl', function ($scope, $location, $routeParams, restFaculty, restDepartments) {
     $scope.save = function() {
-      restFaculty.update($scope.faculty);
+      // restFaculty.update($scope.faculty);
+      if ($scope.faculty.image !== undefined) {
+        var files = [],
+          filesFormDataName = [];
+
+        if ($scope.faculty.image[0] !== undefined) {
+          files.push($scope.faculty.image[0]);
+          filesFormDataName.push('image');
+        }
+
+        $scope.upload = $upload.upload({
+          url: 'http://' + $rootScope.serviceIp + ':8080/filestorage/rest/faculty/',
+          method: 'POST',
+          data: {resource: $scope.faculty},
+          file: files,
+          fileFormDataName: ['image']
+        });
+      }
+      else {
+        restFaculties.create($scope.faculty);
+      }
       $location.path('/admin/faculties');
     };
 
@@ -30,7 +50,28 @@ angular.module('dnuApp')
 angular.module('dnuApp')
   .controller('FacultyAdminCreateCtrl', function ($scope, $location, $routeParams, restFaculties, restDepartments) {
     $scope.save = function() {
-      restFaculties.create($scope.faculty);
+      //restFaculties.create($scope.faculty);
+      if ($scope.faculty.image !== undefined) {
+        var files = [],
+          filesFormDataName = [];
+
+        if ($scope.faculty.image[0] !== undefined) {
+          files.push($scope.faculty.image[0]);
+          filesFormDataName.push('image');
+        }
+
+        $scope.upload = $upload.upload({
+          url: 'http://' + $rootScope.serviceIp + ':8080/filestorage/rest/faculty/',
+          method: 'POST',
+          data: {resource: $scope.faculty},
+          file: files,
+          fileFormDataName: ['image']
+        });
+      }
+      else {
+        restFaculties.create($scope.faculty);
+      }
+
       $location.path('/admin/faculties');
     };
     $scope.departments = restDepartments.list();

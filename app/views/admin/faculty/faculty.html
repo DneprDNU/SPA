@@ -17,7 +17,18 @@
   <div class="form-group">
     <label for="image">Фото факультету</label>
     <input type="file" id="image">
-    <!--<p class="help-block">Upload faculty photo.</p>-->
+  </div>
+  <div ng-switch on="resource">
+    <div ng-switch-when="resource.image">
+      <img src="http://cumbrianrun.co.uk/wp-content/uploads/2014/02/default-placeholder.png" width="200" height="200" />
+    </div>
+    <div ng-switch-default>
+      <img src="{{ resource.image }}" width="200" height="200" />
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="resource-image">Зображення ресурсу</label>
+    <input type="file" id="resource-image" ng-model="resource.image" ng-file-select ng-multiple="false" ng-file-change="fileSelected($files, $event)" name="image" required>
   </div>
   <div class="control-group">
     <div class="controls">
