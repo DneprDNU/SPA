@@ -8,7 +8,7 @@
  * Controller of the angularApp
  */
 angular.module('dnuApp')
-  .controller('DepartmentAdminEditCtrl', function ($scope, $location, $routeParams, $upload, restDepartment, restSpecialities, restTeachers) {
+  .controller('DepartmentAdminEditCtrl', function ($scope, $rootScope, $location, $routeParams, $upload, restDepartment, restSpecialities, restTeachers) {
     $scope.save = function() {
       //restDepartment.update($scope.department);
       if ($scope.department.image !== undefined) {
@@ -50,7 +50,7 @@ angular.module('dnuApp')
   });
 
 angular.module('dnuApp')
-  .controller('DepartmentAdminCreateCtrl', function ($scope, $location, $routeParams, $upload, restDepartments, restSpecialities, restTeachers) {
+  .controller('DepartmentAdminCreateCtrl', function ($scope, $rootScope, $location, $routeParams, $upload, restDepartments, restSpecialities, restTeachers) {
     $scope.save = function() {
       //restDepartments.create($scope.department);
       if ($scope.department.image !== undefined) {

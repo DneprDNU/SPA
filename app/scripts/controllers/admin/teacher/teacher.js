@@ -8,7 +8,7 @@
  * Controller of the angularApp
  */
 angular.module('dnuApp')
-  .controller('TeacherAdminEditCtrl', function ($scope, $location, $upload, $routeParams, restTeacher) {
+  .controller('TeacherAdminEditCtrl', function ($scope, $rootScope, $location, $upload, $routeParams, restTeacher) {
     $scope.save = function() {
       //restTeachers.update($scope.teacher);
       if ($scope.teacher.image !== undefined) {
@@ -47,7 +47,7 @@ angular.module('dnuApp')
   });
 
 angular.module('dnuApp')
-  .controller('TeacherAdminCreateCtrl', function ($scope, $location, $upload, $routeParams, restTeachers) {
+  .controller('TeacherAdminCreateCtrl', function ($scope, $rootScope, $location, $upload, $routeParams, restTeachers) {
     $scope.save = function() {
       restTeachers.create($scope.teacher);
       $location.path('/admin/teachers');

@@ -8,7 +8,7 @@
  * Controller of the angularApp
  */
 angular.module('dnuApp')
-  .controller('SubjectAdminEditCtrl', function ($scope, $location, $upload, $routeParams, restSubject, restTeachers) {
+  .controller('SubjectAdminEditCtrl', function ($scope, $rootScope, $location, $upload, $routeParams, restSubject, restTeachers) {
     $scope.save = function() {
       //restSubject.update($scope.subject);
       if ($scope.subject.image !== undefined) {
@@ -49,7 +49,7 @@ angular.module('dnuApp')
   });
 
 angular.module('dnuApp')
-  .controller('SubjectAdminCreateCtrl', function ($scope, $location, $upload, $routeParams, restSubjects, restTeachers) {
+  .controller('SubjectAdminCreateCtrl', function ($scope, $rootScope, $location, $upload, $routeParams, restSubjects, restTeachers) {
     $scope.save = function() {
       restSubjects.create($scope.subject);
       $location.path('/admin/subjects');

@@ -8,7 +8,7 @@
  * Controller of the angularApp
  */
 angular.module('dnuApp')
-  .controller('SpecialityAdminEditCtrl', function ($scope, $location, $routeParams, restSpeciality, restTeachers) {
+  .controller('SpecialityAdminEditCtrl', function ($scope, $rootScope, $location, $routeParams, restSpeciality, restTeachers) {
     $scope.save = function() {
       restSpeciality.update($scope.speciality);
       $location.path('/admin/specialities');
@@ -29,7 +29,7 @@ angular.module('dnuApp')
   });
 
 angular.module('dnuApp')
-  .controller('SpecialityAdminCreateCtrl', function ($scope, $location, $routeParams, restSpecialities, restTeachers) {
+  .controller('SpecialityAdminCreateCtrl', function ($scope, $rootScope, $location, $routeParams, restSpecialities, restTeachers) {
     $scope.save = function() {
       restSpecialities.create($scope.speciality);
       $location.path('/admin/specialities');
