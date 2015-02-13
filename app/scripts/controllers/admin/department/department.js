@@ -57,8 +57,8 @@ angular.module('dnuApp')
         var files = [],
           filesFormDataName = [];
 
-        if ($scope.faculty.image[0] !== undefined) {
-          files.push($scope.faculty.image[0]);
+        if ($scope.department.image[0] !== undefined) {
+          files.push($scope.department.image[0]);
           filesFormDataName.push('image');
         }
 
