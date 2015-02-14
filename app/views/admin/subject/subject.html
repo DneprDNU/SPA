@@ -8,6 +8,19 @@
     <select id="resources" ng-options="item.id as item.name for item in resources track by item.id" ng-model="subject.resources" multiple bootstrap-select>
     </select>
   </div>
+  <div class="form-group">
+    <label for="subject-image">Зображення предмету</label>
+    <div ng-switch on="subject">
+      <div ng-switch-when="subject.image">
+        <img src="http://cumbrianrun.co.uk/wp-content/uploads/2014/02/default-placeholder.png" width="200" height="200" />
+      </div>
+      <div ng-switch-default>
+        <img src="{{ subject.image }}" width="200" height="200" />
+      </div>
+    </div>
+    <p>Змiнити зображення</p>
+    <input type="file" id="subject-image" ng-model="subject.image" ng-file-select ng-multiple="false" ng-file-change="fileSelected($files, $event)" name="image" required>
+  </div>
   <div class="control-group">
     <div class="controls">
       <a ng-click="cancel()" class="btn btn-small">Відміна</a>
