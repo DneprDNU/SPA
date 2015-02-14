@@ -8,7 +8,7 @@
  * Controller of the angularApp
  */
 angular.module('dnuApp')
-  .controller('FacultyAdminEditCtrl', function ($scope, $location, $upload, $routeParams, restFaculty, restDepartments) {
+  .controller('FacultyAdminEditCtrl', function ($scope, $rootScope, $location, $upload, $routeParams, restFaculty, restDepartments) {
     $scope.save = function() {
       // restFaculty.update($scope.faculty);
       if ($scope.faculty.image !== undefined) {
@@ -22,7 +22,7 @@ angular.module('dnuApp')
 
         $scope.upload = $upload.upload({
           url: 'http://' + $rootScope.serviceIp + ':8080/filestorage/rest/faculty/',
-          method: 'POST',
+          method: 'PUT',
           data: {resource: $scope.faculty},
           file: files,
           fileFormDataName: ['image']
@@ -48,7 +48,7 @@ angular.module('dnuApp')
   });
 
 angular.module('dnuApp')
-  .controller('FacultyAdminCreateCtrl', function ($scope, $location, $upload, $routeParams, restFaculties, restDepartments) {
+  .controller('FacultyAdminCreateCtrl', function ($scope, $rootScope, $location, $upload, $routeParams, restFaculties, restDepartments) {
     $scope.save = function() {
       //restFaculties.create($scope.faculty);
       if ($scope.faculty.image !== undefined) {
