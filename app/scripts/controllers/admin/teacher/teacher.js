@@ -38,7 +38,7 @@ angular.module('dnuApp')
       $location.path('/admin/teachers');
     };
 
-    $scope.teacher = restTeachers.get({id: $routeParams.id});
+    $scope.teacher = restTeacher.get({id: $routeParams.id});
 
     // callback for ng-click 'createResource':
     $scope.createNewTeacher = function () {
