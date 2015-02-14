@@ -12,11 +12,13 @@ angular.module('dnuApp')
     $scope.categories = restCategories.list();
     $scope.categoryResourcesAmount = [];
 
+    $scope.categoriesWithContent = [];
+
     angular.forEach($scope.categories, function (category, id) {
-      console.log(category);
-      console.log(id);
-      $scope.categoryResourcesAmount[category.id] = restResources.list({categoryId: category.id});
+      $scope.categoriesWithContent[id] = category;
     });
 
-    console.log($scope);
+    $scope.filterCategories = function(category) {
+      return category.resourceCount > 0;
+    };
   });

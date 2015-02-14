@@ -14,16 +14,18 @@
             ng-model="faculty.departments" multiple bootstrap-select>
     </select>
   </div>
-  <div ng-switch on="faculty">
-    <div ng-switch-when="faculty.image">
-      <img src="http://cumbrianrun.co.uk/wp-content/uploads/2014/02/default-placeholder.png" width="200" height="200" />
-    </div>
-    <div ng-switch-default>
-      <img src="{{ faculty.image }}" width="200" height="200" />
-    </div>
-  </div>
+
   <div class="form-group">
     <label for="faculty-image">Зображення факультету</label>
+    <div ng-switch on="faculty">
+      <div ng-switch-when="faculty.image">
+        <img src="http://cumbrianrun.co.uk/wp-content/uploads/2014/02/default-placeholder.png" width="200" height="200" />
+      </div>
+      <div ng-switch-default>
+        <img src="{{ faculty.image }}" width="200" height="200" />
+      </div>
+    </div>
+    <p>Змiнити зображення</p>
     <input type="file" id="faculty-image" ng-model="faculty.image" ng-file-select ng-multiple="false" ng-file-change="fileSelected($files, $event)" name="image" required>
   </div>
   <div class="control-group">
