@@ -70,7 +70,7 @@ angular.module('dnuApp')
         });
       }
       else {
-        restFaculties.create($scope.subject);
+        restSubjects.create($scope.subject);
       }
 
       $location.path('/admin/subjects');
