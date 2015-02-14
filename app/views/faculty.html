@@ -7,7 +7,7 @@
             <div id="departments" class="content-list">
               <section id="isotope-container">
                 <div ng-repeat="item in faculty.departments" class="department isotope-item">
-                  <a ng-href="/#/faculty/{{ faculty.id }}/department/{{ item.id }}"><img src="{{ item.image }}"/>
+                  <a ng-href="#/faculty/{{ faculty.id }}/department/{{ item.id }}"><img src="{{ item.image }}"/>
 
                     <p>{{ item.name }}</p>
 
@@ -27,7 +27,7 @@
             <div id="specialities" class="content-list">
               <section id="isotope-container-2">
                 <div ng-repeat="item in specialities" class="speciality isotope-item">
-                  <a ng-href="/#/faculty/{{ faculty.id }}/speciality/{{ item.id }}"><p>Code is {{ item.code }}</p>
+                  <a ng-href="#/faculty/{{ faculty.id }}/speciality/{{ item.id }}"><p>Code is {{ item.code }}</p>
 
                     <p>{{ item.name }}</p>
 

@@ -4,7 +4,7 @@
       <div id="resources" class="content-list" ng-controller="ResourcesCtrl">
         <section id="isotope-container" isotope-dnu-container>
           <div ng-repeat="item in resources" class="resource isotope-item" isotope-dnu-item>
-            <a ng-href="/#/resource/{{ item.id }}">
+            <a ng-href="#/resource/{{ item.id }}">
               <img src="{{ item.image }}" />
               <p>{{ item.name }}</p>
               <p>{{ item.description }}</p>
