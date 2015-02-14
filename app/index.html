@@ -71,7 +71,7 @@
   <h3>Колекції</h3>
   <ul class="list-group">
     <li class="list-group-item" ng-repeat="link in categories | filter:filterCategories">
-      <a ng-href="/#/resources?categoryId={{ link.id }}">
+      <a href="#/resources?categoryId={{ link.id }}">
         {{ link.name }} [{{ link.resourceCount }}]
       </a>
     </li>
