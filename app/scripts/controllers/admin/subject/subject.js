@@ -21,8 +21,8 @@ angular.module('dnuApp')
         }
 
         $scope.upload = $upload.upload({
-          url: 'http://' + $rootScope.serviceIp + ':8080/filestorage/rest/department/',
-          method: 'POST',
+          url: 'http://' + $rootScope.serviceIp + ':8080/filestorage/rest/subject/' + $scope.subject.id,
+          method: 'PUT',
           data: {resource: $scope.subject},
           file: files,
           fileFormDataName: ['image']
@@ -50,8 +50,29 @@ angular.module('dnuApp')
 
 angular.module('dnuApp')
   .controller('SubjectAdminCreateCtrl', function ($scope, $rootScope, $location, $upload, $routeParams, restSubjects, restTeachers) {
+
     $scope.save = function() {
-      restSubjects.create($scope.subject);
+      if ($scope.subject.image !== undefined) {
+        var files = [],
+          filesFormDataName = [];
+
+        if ($scope.subject.image[0] !== undefined) {
+          files.push($scope.subject.image[0]);
+          filesFormDataName.push('image');
+        }
+
+        $scope.upload = $upload.upload({
+          url: 'http://' + $rootScope.serviceIp + ':8080/filestorage/rest/subject/',
+          method: 'POST',
+          data: {resource: $scope.subject},
+          file: files,
+          fileFormDataName: ['image']
+        });
+      }
+      else {
+        restSubjects.create($scope.subject);
+      }
+
       $location.path('/admin/subjects');
     };
 

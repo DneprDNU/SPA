@@ -24,7 +24,7 @@ angular.module('dnuApp')
         }
 
         $scope.upload = $upload.upload({
-          url: 'http://' + $rootScope.serviceIp + ':8080/filestorage/rest/resource/',
+          url: 'http://' + $rootScope.serviceIp + ':8080/filestorage/rest/resource/' + $scope.resource.id,
           method: 'PUT',
           data: {resource: $scope.resource},
           file: files,
