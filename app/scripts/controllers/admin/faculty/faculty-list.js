@@ -25,5 +25,5 @@ angular.module('dnuApp')
       $location.path('/admin/faculty');
     };
 
-    $scope.faculties = restFaculties.list();
+    $scope.faculties = restFaculties.list({adminMode: 1});
   });

@@ -84,6 +84,10 @@ angular
       })
       .when('/resource/:id', {
         templateUrl: 'views/resource.html',
+        controller: 'ResourceCtrl'
+      })
+      .when('/resources', {
+        templateUrl: 'views/resources.html',
         controller: 'ResourcesCtrl'
       })
       .when('/specialities', {

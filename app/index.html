@@ -67,63 +67,14 @@
   </form>
 </div>
 
-<div ng-controller="CategoriesListCtrl"></div>
-
-<div id="collections" data-spy="affix" data-offset-top="350" ng-controller="LastResourcesCtrl">
+<div id="collections" data-spy="affix" data-offset-top="350" ng-controller="CategoriesListCtrl">
   <h3>Колекції</h3>
   <ul class="list-group">
-    <!--<li class="list-group-item" ng-repeat="link in resources">-->
-      <!--<a ng-href="/#/resource/{{ link.id }}">-->
-        <!--{{ link.name }}-->
-      <!--</a>-->
-    <!--</li>-->
-    <li class="list-group-item"><a href="http://dnu.thebodva.com/inner/c1">
-      Навчальні матеріали [11]
-    </a></li>
-
-    <li class="list-group-item"><a href="http://dnu.thebodva.com/inner/c6">
-      Дисертації [1]
-    </a></li>
-
-    <li class="list-group-item"><a href="http://dnu.thebodva.com/inner/c7">
-      Автореферати дисертацій [1]
-    </a></li>
-
-    <li class="list-group-item"><a href="http://dnu.thebodva.com/inner/c8">
-      Матеріали конференцій [1]
-    </a></li>
-
-    <li class="list-group-item"><a href="http://dnu.thebodva.com/inner/c9">
-      Науково-періодичні видання ДНУ [1]
-    </a></li>
-
-    <li class="list-group-item"><a href="http://dnu.thebodva.com/inner/c10">
-      Монографії співробітників університету [1]
-    </a></li>
-
-    <li class="list-group-item"><a href="http://dnu.thebodva.com/inner/c11">
-      Стаття [3]
-    </a></li>
-
-    <li class="list-group-item"><a href="http://dnu.thebodva.com/inner/c12">
-      Книга [6]
-    </a></li>
-
-    <li class="list-group-item"><a href="http://dnu.thebodva.com/inner/c13">
-      Патент [1]
-    </a></li>
-
-    <li class="list-group-item"><a href="http://dnu.thebodva.com/inner/c15">
-      Презентація [4]
-    </a></li>
-
-    <li class="list-group-item"><a href="http://dnu.thebodva.com/inner/c16">
-      Методична розробка [9]
-    </a></li>
-
-    <li class="list-group-item"><a href="http://dnu.thebodva.com/inner/c17">
-      Конспект лекцій [27]
-    </a></li>
+    <li class="list-group-item" ng-repeat="link in categories | filter:filterCategories">
+      <a ng-href="/#/resources?categoryId={{ link.id }}">
+        {{ link.name }} [{{ link.resourceCount }}]
+      </a>
+    </li>
   </ul>
 </div>
 
