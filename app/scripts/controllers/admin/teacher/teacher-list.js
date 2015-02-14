@@ -25,5 +25,5 @@ angular.module('dnuApp')
       $location.path('/admin/teacher');
     };
 
-    $scope.teachers = restTeachers.list();
+    $scope.teachers = restTeachers.list({adminMode: 1});
   });

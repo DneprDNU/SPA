@@ -76,11 +76,8 @@ angular
         controller: 'TeachersCtrl'
       })
       .when('/free-resources', {
-        templateUrl: 'views/free-resources.html'
-      })
-      .when('/free-resources', {
         templateUrl: 'views/free-resources.html',
-        controller: 'ResourcesCtrl'
+        controller: 'FreeResourcesCtrl'
       })
       .when('/resource/:id', {
         templateUrl: 'views/resource.html',

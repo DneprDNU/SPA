@@ -25,5 +25,5 @@ angular.module('dnuApp')
       $location.path('/admin/free-resource');
     };
 
-    $scope.freeResources = restFreeResources.list();
+    $scope.freeResources = restFreeResources.list({adminMode: 1});
   });

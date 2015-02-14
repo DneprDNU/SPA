@@ -25,5 +25,5 @@ angular.module('dnuApp')
       $location.path('/admin/resource');
     };
 
-    $scope.resources = restResources.list();
+    $scope.resources = restResources.list({adminMode: 1});
   });

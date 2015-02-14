@@ -25,5 +25,5 @@ angular.module('dnuApp')
       $location.path('/admin/category');
     };
 
-    $scope.categories = restCategories.list();
+    $scope.categories = restCategories.list({adminMode: 1});
   });

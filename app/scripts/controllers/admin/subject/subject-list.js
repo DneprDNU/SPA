@@ -25,5 +25,5 @@ angular.module('dnuApp')
       $location.path('/admin/subject');
     };
 
-    $scope.subjects = restSubjects.list();
+    $scope.subjects = restSubjects.list({adminMode: 1});
   });

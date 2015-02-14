@@ -25,5 +25,5 @@ angular.module('dnuApp')
       $location.path('/admin/department');
     };
 
-    $scope.departments = restDepartments.list();
+    $scope.departments = restDepartments.list({adminMode: 1});
   });

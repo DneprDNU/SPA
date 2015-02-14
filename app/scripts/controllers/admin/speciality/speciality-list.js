@@ -25,5 +25,5 @@ angular.module('dnuApp')
       $location.path('/admin/speciality');
     };
 
-    $scope.specialities = restSpecialities.list();
+    $scope.specialities = restSpecialities.list({adminMode: 1});
   });
