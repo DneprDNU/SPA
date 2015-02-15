@@ -22,7 +22,6 @@ angular.module('dnuApp')
     $scope.addOne = function () {
       $scope.collection.push({id:1, title: "Teacher", src: "http://dnu.thebodva.com/upload/b32f3d1ef28edf602362b91cb935886f.jpg"});
     };
-
   });
 
 angular.module('dnuApp')
@@ -30,4 +29,3 @@ angular.module('dnuApp')
     $scope.teacher = restTeacher.get({id: $routeParams.id});
     $scope.resources = [];
   });
-

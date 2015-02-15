@@ -8,7 +8,7 @@
  * Controller of the angularApp
  */
 angular.module('dnuApp')
-  .controller('TeacherAdminListCtrl', function ($scope, $location, restFaculty, restTeachers) {
+  .controller('TeacherAdminListCtrl', function ($scope, $location, restFaculty, restTeachers, restTeacher) {
     // callback for ng-click 'editResource':
     $scope.editTeacher = function (teacherId) {
       $location.path('/admin/teacher/' + teacherId);
@@ -16,7 +16,7 @@ angular.module('dnuApp')
 
     // callback for ng-click 'deleteResource':
     $scope.deleteTeacher = function (teacherId) {
-      restTeachers.delete({ id: teacherId });
+      restTeacher.delete({ id: teacherId });
       $scope.faculties = restTeachers.list();
     };
 

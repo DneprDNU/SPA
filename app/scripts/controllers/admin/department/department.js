@@ -42,7 +42,7 @@ angular.module('dnuApp')
 
     $scope.specialities = restSpecialities.list();
     $scope.employees = restTeachers.list();
-
+    console.log($scope);
     // callback for ng-click 'createResource':
     $scope.createNewDepartment = function () {
       $location.path('/admin/departments');
@@ -76,8 +76,10 @@ angular.module('dnuApp')
       $location.path('/admin/departments');
     };
 
-    $scope.specialities = restSpecialities.list();
-    $scope.employees = restTeachers.list();
+    $scope.department = {};
+
+    $scope.department.specialities = restSpecialities.list();
+    $scope.department.employees = restTeachers.list();
 
     $scope.cancel = function () {
       $location.path('/admin/departments');

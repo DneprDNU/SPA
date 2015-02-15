@@ -44,10 +44,13 @@ angular.module('dnuApp')
     $scope.createNewTeacher = function () {
       $location.path('/admin/teachers');
     };
+
   });
 
 angular.module('dnuApp')
   .controller('TeacherAdminCreateCtrl', function ($scope, $rootScope, $location, $upload, $routeParams, restTeachers) {
+    console.log($scope);
+
     $scope.save = function() {
       if ($scope.teacher.image !== undefined) {
         var files = [],
@@ -76,4 +79,5 @@ angular.module('dnuApp')
     $scope.cancel = function () {
       $location.path('/admin/teachers');
     };
+    console.log($scope.teacher !== undefined && $scope.teacher.image !== '');
   });

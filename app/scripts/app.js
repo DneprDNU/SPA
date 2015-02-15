@@ -25,8 +25,10 @@ angular
     'restSpecialityResource',
     'restSearchResource',
     'restSubjectResource',
+    'restLinkResource',
     'restTeacherResource',
     'restResourceResource',
+    'restUserResource',
     'restFreeResourceResource',
     'dnuApp.directives'
   ])
@@ -159,6 +161,18 @@ angular
         templateUrl: 'views/admin/teacher/teacher.html',
         controller: 'TeacherAdminEditCtrl'
       })
+      .when('/admin/links', {
+        templateUrl: 'views/admin/links/links.html',
+        controller: 'LinkAdminListCtrl'
+      })
+      .when('/admin/link', {
+        templateUrl: 'views/admin/links/link.html',
+        controller: 'LinkAdminCreateCtrl'
+      })
+      .when('/admin/link/:id', {
+        templateUrl: 'views/admin/links/link.html',
+        controller: 'LinkAdminEditCtrl'
+      })
       .when('/admin/subjects', {
         templateUrl: 'views/admin/subject/subjects.html',
         controller: 'SubjectAdminListCtrl'
@@ -170,6 +184,18 @@ angular
       .when('/admin/subject/:id', {
         templateUrl: 'views/admin/subject/subject.html',
         controller: 'SubjectAdminEditCtrl'
+      })
+      .when('/admin/users', {
+        templateUrl: 'views/admin/user/users.html',
+        controller: 'UserAdminListCtrl'
+      })
+      .when('/admin/user', {
+        templateUrl: 'views/admin/user/user.html',
+        controller: 'UserCreateAdminCtrl'
+      })
+      .when('/admin/user/:id', {
+        templateUrl: 'views/admin/user/user.html',
+        controller: 'UserAdminEditCtrl'
       })
       .when('/admin/specialities', {
         templateUrl: 'views/admin/speciality/specialities.html',
@@ -251,16 +277,11 @@ angular
     });
 
     $rootScope.hasRole = function(role) {
-
-      if ($rootScope.user === undefined) {
+      if ($rootScope.user === undefined || $rootScope.user.roles === undefined) {
         return false;
       }
 
-      if ($rootScope.user.roles.indexOf(role) === undefined) {
-        return false;
-      }
-
-      return true;
+      return $rootScope.user.roles.indexOf(role) !== -1;
     };
 
     $rootScope.logout = function() {

@@ -2,7 +2,11 @@
 
 angular.module('dnuApp')
   .controller('AdminMenuCtrl', function ($scope, $rootScope, $location) {
-    if (!$rootScope.hasRole('ROLE_ADMIN')) {
+    if (!$rootScope.hasRole('ROLE_ADMIN') && !$rootScope.hasRole('ROLE_SUPERADMIN')) {
       $location.path('/login');
     }
+
+    $scope.isSuperAdmin = $rootScope.hasRole('ROLE_SUPERADMIN');
+    console.log($scope);
+    console.log($rootScope.user);
   });

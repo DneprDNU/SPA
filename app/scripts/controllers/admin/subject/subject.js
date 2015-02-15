@@ -49,7 +49,7 @@ angular.module('dnuApp')
   });
 
 angular.module('dnuApp')
-  .controller('SubjectAdminCreateCtrl', function ($scope, $rootScope, $location, $upload, $routeParams, restSubjects, restTeachers) {
+  .controller('SubjectAdminCreateCtrl', function ($scope, $rootScope, $location, $upload, $routeParams, restSubjects, restTeachers, restResources) {
 
     $scope.save = function() {
       if ($scope.subject.image !== undefined) {
@@ -76,6 +76,8 @@ angular.module('dnuApp')
       $location.path('/admin/subjects');
     };
 
+    $scope.subject = {};
+    $scope.subject.resources = restResources.list();
     $scope.supervisors = restTeachers.list();
 
     $scope.cancel = function () {
