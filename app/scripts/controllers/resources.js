@@ -13,7 +13,7 @@ angular.module('dnuApp')
       $scope.resources = restSearch.search({searchKey: $routeParams.search});
     }
     else if ($routeParams.categoryId !== undefined) {
-      $scope.resources = restSearch.list({categoryId: $routeParams.categoryId});
+      $scope.resources = restResources.list({categoryId: $routeParams.categoryId});
     }
     else {
       $scope.resources = restResources.list();
