@@ -32,6 +32,10 @@ angular.module('restLinkResource', ['ngResource'])
         },
         create: {
           method: 'POST'
+        },
+        count: {
+          url: 'http://' + $rootScope.serviceIp + ':8080/filestorage/rest/links/count',
+          method: 'GET'
         }
       }
     );

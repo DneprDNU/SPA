@@ -21,7 +21,6 @@ angular.module("dnuApp.directives")
       if (scope.$last) {
         scope.$emit('LastElem');
       }
-
       return element;
     };
   });

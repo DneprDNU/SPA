@@ -14,7 +14,6 @@ angular.module('dnuApp')
     $scope.login = function() {
       restAuthentication.authenticate($.param({username: $scope.username, password: $scope.password}), function(authenticationResult) {
         var authToken = authenticationResult.token;
-        console.log(authenticationResult);
         $rootScope.authToken = authToken;
         if ($scope.rememberMe) {
           $cookieStore.put('authToken', authToken);

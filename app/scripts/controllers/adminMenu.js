@@ -7,6 +7,4 @@ angular.module('dnuApp')
     }
 
     $scope.isSuperAdmin = $rootScope.hasRole('ROLE_SUPERADMIN');
-    console.log($scope);
-    console.log($rootScope.user);
   });

@@ -8,12 +8,12 @@
  * Controller of the angularApp
  */
 angular.module('dnuApp')
-  .controller('FacultyAdminListCtrl', function ($scope, $location, restFaculty, restFaculties) {
+  .controller('FacultyAdminListCtrl', function ($scope, $routeParams, $location, restFaculty, restFaculties) {
     // callback for ng-click 'editResource':
     $scope.editFaculty = function (facultyId) {
       $location.path('/admin/faculty/' + facultyId);
     };
-
+    
     // callback for ng-click 'deleteResource':
     $scope.deleteFaculty = function (facultyId) {
       restFaculty.delete({ id: facultyId });
@@ -25,5 +25,27 @@ angular.module('dnuApp')
       $location.path('/admin/faculty');
     };
 
-    $scope.faculties = restFaculties.list({adminMode: 1});
+    $scope.pager = {current: 1, items: [], count: 1};
+    restFaculties.count(function (response) {
+      $scope.pager.count = response.count;
+      for (var i = 1; $scope.pager.count/10 >= i; i++) {
+        $scope.pager.items.push({
+          active: i == ($routeParams.page !== undefined ? $routeParams.page : 1),
+          number: i,
+          url: '#/admin/faculties?page=' + i
+        });
+      }
+    });
+    $scope.pager.current = $routeParams.page !== undefined ? $routeParams.page : 1;
+    $scope.pager.items = [];
+
+    if ($routeParams.page !== undefined) {
+      var from = ($routeParams.page - 1) * 10;
+      var to = $routeParams.page * 10;
+
+      $scope.faculties = restFaculties.list({adminMode: 1, from: from, to: to});
+    }
+    else {
+      $scope.faculties = restFaculties.list({adminMode: 1, from: 0, to: 10});
+    }
   });

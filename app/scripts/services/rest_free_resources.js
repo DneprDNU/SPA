@@ -34,6 +34,10 @@ angular.module('restFreeResourceResource', ['ngResource'])
         },
         create: {
           method: 'POST'
+        },
+        count: {
+          url: 'http://' + $rootScope.serviceIp + ':8080/filestorage/rest/free_resource/count',
+          method: 'GET'
         }
       }
     );

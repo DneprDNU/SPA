@@ -32,6 +32,10 @@ angular.module('restSpecialityResource', ['ngResource'])
         },
         create: {
           method: 'POST'
+        },
+        count: {
+          url: 'http://' + $rootScope.serviceIp + ':8080/filestorage/rest/speciality/count',
+          method: 'GET'
         }
       }
     );

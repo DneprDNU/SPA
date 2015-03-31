@@ -33,7 +33,7 @@ angular
     'dnuApp.directives'
   ])
   .run(function($rootScope) {
-    $rootScope.serviceIp = '80.240.139.45';
+    $rootScope.serviceIp = '104.131.173.79';
   })
   .config(['$routeProvider', '$locationProvider', '$httpProvider', function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
@@ -321,7 +321,7 @@ angular
       roles : [ 'ADMIN' ]
     } ];
 
-    $rootScope.serviceIp = '80.240.139.45';
+    $rootScope.serviceIp = '104.131.173.79';
 
     $rootScope.initialized = true;
   });
