@@ -28,11 +28,12 @@ angular.module('dnuApp')
     $scope.pager = {current: 1, items: [], count: 1};
     restSubjects.count(function (response) {
       $scope.pager.count = response.count;
-      for (var i = 1; $scope.pager.count/10 >= i; i++) {
+      for (var i = 0; $scope.pager.count/10 >= i; i++) {
+        var j = i +1;
         $scope.pager.items.push({
-          active: i == ($routeParams.page !== undefined ? $routeParams.page : 1),
-          number: i,
-          url: '#/admin/subjects?page=' + i
+          active: j == ($routeParams.page !== undefined ? $routeParams.page : 1),
+          number: j,
+          url: '#/admin/subjects?page=' + j
         });
       }
     });

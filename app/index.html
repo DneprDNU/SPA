@@ -36,7 +36,7 @@
         <li class="active"><a href="#">Головна</a></li>
         <li><a href="#faculties">Факультети</a></li>
         <li><a href="#free-resources">Відкриті ресурси</a></li>
-        <li><a href="#login">Авторізація</a></li>
+        <li><a href="#auth"  ng-if="$root.loggedIn">Авторизація</a></li>
         <li><a href="#about">Інформація</a></li>
         <li><a href="#admin">Адмiнiстрування</a></li>
       </ul>
@@ -189,6 +189,7 @@
 <script src="scripts/controllers/contact.js"></script>
 <script src="scripts/controllers/categories.js"></script>
 <script src="scripts/controllers/login.js"></script>
+<script src="scripts/controllers/auth.js"></script>
 <script src="scripts/controllers/free-resources.js"></script>
 <script src="scripts/controllers/faculties.js"></script>
 <script src="scripts/controllers/specialities.js"></script>

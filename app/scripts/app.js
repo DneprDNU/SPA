@@ -53,6 +53,10 @@ angular
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
       })
+      .when('/auth', {
+        templateUrl: 'views/auth.html',
+        controller: 'AuthCtrl'
+      })
       .when('/faculties', {
         templateUrl: 'views/faculties.html',
         controller: 'FacultiesCtrl'
@@ -292,17 +296,16 @@ angular
     };
 
     /* Try getting valid user from cookie or go to login page */
-    var originalPath = $location.path();
-    $location.path("/login");
+    var originalPath = $location.path();;
     var authToken = $cookieStore.get('authToken');
     if (authToken !== undefined) {
       $rootScope.authToken = authToken;
       restAuthentication.get(function(user) {
         $rootScope.user = user;
-        $location.path(originalPath);
+        $rootScope.initialized = true;
       });
     }
-
+    $rootScope.loggedIn = (authToken === undefined);
     $rootScope.userMenuActions = [ {
       name : "menu.login",
       href : "#/login",
@@ -322,6 +325,4 @@ angular
     } ];
 
     $rootScope.serviceIp = '104.131.173.79';
-
-    $rootScope.initialized = true;
   });

@@ -22,16 +22,17 @@ angular.module('dnuApp')
 
     // callback for ng-click 'createResource':
     $scope.createNewDepartment = function () {
-      $location.path('/admin/departments');
+      $location.path('/admin/department');
     };
     $scope.pager = {current: 1, items: [], count: 1};
     restDepartments.count(function (response) {
       $scope.pager.count = response.count;
-      for (var i = 1; $scope.pager.count/10 >= i; i++) {
+      for (var i = 0; $scope.pager.count/10 >= i; i++) {
+        var j = i +1;
         $scope.pager.items.push({
-          active: i == ($routeParams.page !== undefined ? $routeParams.page : 1),
-          number: i,
-          url: '#/admin/departments?page=' + i
+          active: j == ($routeParams.page !== undefined ? $routeParams.page : 1),
+          number: j,
+          url: '#/admin/departments?page=' + j
         });
       }
     });
