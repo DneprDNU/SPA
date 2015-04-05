@@ -101,6 +101,22 @@ angular
         templateUrl: 'views/speciality.html',
         controller: 'SpecialityCtrl'
       })
+      .when('/faculty/:facultyId/speciality/:specId/subject/:id', {
+        templateUrl: 'views/subject.html',
+        controller: 'SubjectCtrl'
+      })
+      .when('/faculty/:facultyId/speciality/:specId/teacher/:id', {
+        templateUrl: 'views/teacher.html',
+        controller: 'TeacherCtrl'
+      })
+      .when('/faculty/:facultyId/department/:departmentId/subject/:id', {
+        templateUrl: 'views/subject.html',
+        controller: 'SubjectCtrl'
+      })
+      .when('/faculty/:facultyId/department/:departmentId/teacher/:id', {
+        templateUrl: 'views/teacher.html',
+        controller: 'TeacherCtrl'
+      })
       .when('/admin', {
         templateUrl: 'views/admin_menu.html',
         controller: 'AdminMenuCtrl'
@@ -273,14 +289,14 @@ angular
     );
 
   }])
-  .run(function($rootScope, $location, $cookieStore, restAuthentication) {
+  .run(function($rootScope, $location, $cookieStore,$timeout, restAuthentication) {
 
     /* Reset error when a new view is loaded */
     $rootScope.$on('$viewContentLoaded', function() {
       delete $rootScope.error;
     });
 
-    $rootScope.hasRole = function(role) {
+    $rootScope.hasRole = function(role, $q) {
       if ($rootScope.user === undefined || $rootScope.user.roles === undefined) {
         return false;
       }
@@ -296,13 +312,13 @@ angular
     };
 
     /* Try getting valid user from cookie or go to login page */
-    var originalPath = $location.path();;
     var authToken = $cookieStore.get('authToken');
     if (authToken !== undefined) {
       $rootScope.authToken = authToken;
       restAuthentication.get(function(user) {
         $rootScope.user = user;
         $rootScope.initialized = true;
+        $rootScope.loggedIn = user === undefined;
       });
     }
     $rootScope.loggedIn = (authToken === undefined);
@@ -325,4 +341,8 @@ angular
     } ];
 
     $rootScope.serviceIp = '104.131.173.79';
+
+    $rootScope.updateIsotope = function() {
+      window.dispatchEvent(new Event('resize'));
+    };
   });

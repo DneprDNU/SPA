@@ -1,12 +1,12 @@
 <div ng-controller="FacultyCtrl">
   <tabset>
-    <tab heading="Departments">
+    <tab heading="Кафедри" select="updateIsotope()">
       <div class="container">
         <div class="row">
           <div class="col-sm-12">
             <div id="departments" class="content-list">
-              <section id="isotope-container">
-                <div ng-repeat="item in faculty.departments" class="department isotope-item">
+              <section id="isotope-container" isotope-dnu-container>
+                <div ng-repeat="item in faculty.departments" class="department isotope-item" isotope-dnu-item>
                   <a ng-href="#/faculty/{{ faculty.id }}/department/{{ item.id }}"><img src="{{ item.image }}"/>
 
                     <p>{{ item.name }}</p>
@@ -20,14 +20,16 @@
       </div>
     </tab>
 
-    <tab heading="Specialities">
+    <tab heading="Спеціальності" select="updateIsotope()">
       <div class="container">
         <div class="row">
           <div class="col-sm-12">
             <div id="specialities" class="content-list">
-              <section id="isotope-container-2">
-                <div ng-repeat="item in specialities" class="speciality isotope-item">
-                  <a ng-href="#/faculty/{{ faculty.id }}/speciality/{{ item.id }}"><p>Code is {{ item.code }}</p>
+              <section id="isotope-container-2" isotope-dnu-container>
+                <div ng-repeat="item in specialities" class="speciality isotope-item" isotope-dnu-item>
+                  <a ng-href="#/faculty/{{ faculty.id }}/speciality/{{ item.id }}">
+                    <img src="{{ item.image }}"/>
+                    <p>Код спеціальності {{ item.code }}</p>
 
                     <p>{{ item.name }}</p>
 
