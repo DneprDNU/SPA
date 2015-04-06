@@ -191,7 +191,7 @@ angular
       })
       .when('/admin/user', {
         templateUrl: 'views/admin/user/user.html',
-        controller: 'UserCreateAdminCtrl'
+        controller: 'UserAdminCreateCtrl'
       })
       .when('/admin/user/:id', {
         templateUrl: 'views/admin/user/user.html',
