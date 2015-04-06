@@ -1,11 +1,13 @@
 <div ng-controller="SpecialityCtrl">
+  <tabset>
+    <tab heading="Вчителі" select="updateIsotope()">
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
         <div id="departments" class="content-list">
-          <section id="isotope-container">
-            <div ng-repeat="item in teachers" class="department isotope-item">
-              <a ng-href="#/faculty/{{ faculty.id }}/speciality/{{ speciality.id }}//department/{{ item.id }}"><img src="{{ item.image }}" />
+          <section id="isotope-container" isotope-dnu-container>
+            <div ng-repeat="item in speciality.supervisors" class="department isotope-item" isotope-dnu-item>
+              <a ng-href="#/faculty/{{ faculty.id }}/speciality/{{ speciality.id }}/teacher/{{ item.id }}"><img src="{{ item.image }}" />
               <p>{{ item.name }}</p>
               <p>{{ item.description }}</p></a>
             </div>
@@ -14,14 +16,17 @@
       </div>
     </div>
   </div>
+      </tab>
 
+    <tab heading="Предмети" select="updateIsotope()">
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
         <div id="specialities" class="content-list">
-          <section id="isotope-container-2">
-            <div ng-repeat="item in subjects" class="speciality isotope-item">
-              <a ng-href="#/faculty/{{ faculty.id }}/speciality/{{ speciality.id }}/subject/{{ item.id }}"><p>Code is {{ item.code }}</p>
+          <section id="isotope-container-2"  isotope-dnu-container>
+            <div ng-repeat="item in subjects" class="speciality isotope-item" isotope-dnu-item>
+              <a ng-href="#/faculty/{{ faculty.id }}/speciality/{{ speciality.id }}/subject/{{ item.id }}">
+                <img src="{{ item.image }}"/>
               <p>{{ item.name }}</p>
               <p>{{ item.description }}</p></a>
             </div>
@@ -30,4 +35,6 @@
       </div>
     </div>
   </div>
+    </tab>
+  </tabset>
 </div>

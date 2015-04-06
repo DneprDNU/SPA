@@ -8,6 +8,5 @@
  * Controller of the angularApp
  */
 angular.module('dnuApp')
-  .controller('MainCtrl', function ($scope) {
-
+  .controller('MainCtrl', function ($scope, $rootScope) {
   });

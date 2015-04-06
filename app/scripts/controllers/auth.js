@@ -8,9 +8,8 @@
  * Controller of the angularApp
  */
 angular.module('dnuApp')
-  .controller('LoginCtrl', function ($scope, $rootScope, $location, $cookieStore, restAuthentication) {
+  .controller('AuthCtrl', function ($scope, $rootScope, $location, $cookieStore, restAuthentication) {
     $scope.rememberMe = false;
-
     $scope.login = function() {
       restAuthentication.authenticate($.param({username: $scope.username, password: $scope.password}), function(authenticationResult) {
         var authToken = authenticationResult.token;
@@ -21,7 +20,7 @@ angular.module('dnuApp')
         }
         restAuthentication.get(function(user) {
           $rootScope.user = user;
-          $location.path("/admin");
+          $location.path("/");
         });
       });
     };
