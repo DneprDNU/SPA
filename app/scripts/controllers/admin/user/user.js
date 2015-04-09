@@ -10,7 +10,7 @@
 angular.module('dnuApp')
   .controller('UserAdminEditCtrl', function ($scope, $rootScope, $location, $upload, $routeParams, restUser, restFaculties) {
     $scope.save = function() {
-      restUser.update($scope.user);
+      restUser.update($scope.userr);
       $location.path('/admin/users');
     };
 
@@ -18,7 +18,7 @@ angular.module('dnuApp')
       $location.path('/admin/users');
     };
 
-    $scope.user = restUser.get({id: $routeParams.id});
+    $scope.userr = restUser.get({id: $routeParams.id});
     $scope.faculties = restFaculties.list();
 
     $scope.createNewUser = function () {
@@ -29,7 +29,7 @@ angular.module('dnuApp')
 angular.module('dnuApp')
   .controller('UserAdminCreateCtrl', function ($scope, $rootScope, $location, $upload, $routeParams, restUsers, restFaculties) {
     $scope.save = function() {
-      restUsers.create($scope.user);
+      restUsers.create($scope.userr);
       $location.path('/admin/users');
     };
 
