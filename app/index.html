@@ -36,9 +36,10 @@
         <li class="active"><a href="#">Головна</a></li>
         <li><a href="#faculties">Факультети</a></li>
         <li><a href="#free-resources">Відкриті ресурси</a></li>
-        <li><a href="#auth"  ng-if="$root.loggedIn">Авторизація</a></li>
+        <li><a href="#auth" ng-if="!$root.user">Авторизація</a></li>
+        <li><a href="#auth" ng-if="$root.user" ng-click="logout()">Вийти</a></li>
         <li><a href="#about">Інформація</a></li>
-        <li><a href="#admin">Адмiнiстрування</a></li>
+        <li><a href="#admin" ng-if="$root.user">Адмiнiстрування</a></li>
       </ul>
     </div>
   </div>
