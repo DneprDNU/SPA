@@ -8,7 +8,7 @@
  * Controller of the angularApp
  */
 angular.module('dnuApp')
-  .controller('CategoryAdminListCtrl', function ($scope, $location, restFaculty, restCategories, $routeParams) {
+  .controller('CategoryAdminListCtrl', function ($scope, $location, restFaculty, restCategories, restCategory, $routeParams) {
     // callback for ng-click 'editResource':
     $scope.editCategory = function (categoryId) {
       $location.path('/admin/category/' + categoryId);
@@ -16,9 +16,12 @@ angular.module('dnuApp')
 
     // callback for ng-click 'deleteResource':
     $scope.deleteCategory = function (categoryId) {
-      restCategories.delete({ id: categoryId }, function(){
-        $scope.faculties = restCategories.list();
-      });
+      restCategory.delete({ id: categoryId }, function(){
+        $scope.categories = restCategories.list();
+      },
+        function(){
+          $scope.categories = restCategories.list();
+        });
     };
 
     // callback for ng-click 'createResource':

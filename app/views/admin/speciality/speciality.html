@@ -5,7 +5,7 @@
   </div>
   <div class="form-group">
     <label for="supervisors">Викладач</label>
-    <select id="supervisors" ng-options="item.id as item.name for item in supervisors track by item.id" ng-model="speciality.supervisors" multiple bootstrap-select>
+    <select id="supervisors" ng-options="item.name for item in supervisors track by item.id" ng-model="speciality.supervisors" multiple bootstrap-select>
     </select>
   </div>
   <div ng-switch on="speciality">

@@ -8,7 +8,7 @@
  * Controller of the angularApp
  */
 angular.module('dnuApp')
-  .controller('SpecialityAdminListCtrl', function ($scope, $location, restFaculty, restSpecialities, $routeParams) {
+  .controller('SpecialityAdminListCtrl', function ($scope, $location, restFaculty, restSpecialities,restSpeciality, $routeParams) {
     // callback for ng-click 'editResource':
     $scope.editSpeciality = function (specialityId) {
       $location.path('/admin/speciality/' + specialityId);
@@ -16,8 +16,9 @@ angular.module('dnuApp')
 
     // callback for ng-click 'deleteResource':
     $scope.deleteSpeciality = function (specialityId) {
-      restSpecialities.delete({ id: specialityId });
-      $scope.faculties = restSpecialities.list();
+      restSpeciality.delete({ id: specialityId }, function(){
+        $scope.specialities = restSpecialities.list();
+      });
     };
 
     // callback for ng-click 'createResource':

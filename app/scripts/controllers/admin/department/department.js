@@ -28,12 +28,17 @@ angular.module('dnuApp')
           fileFormDataName: ['image']
         }).success(function (data, status, headers, config) {
           $location.path('/admin/departments');
-        });
+        }).error(function (data, status, headers, config) {
+            $location.path('/admin/departments');
+          });
       }
       else {
         restDepartment.create($scope.department, function(){
           $location.path('/admin/departments');
-        });
+        },
+          function(){
+            $location.path('/admin/departments');
+          });
       }
     };
 
@@ -75,12 +80,18 @@ angular.module('dnuApp')
           fileFormDataName: ['image']
         }).success(function (data, status, headers, config) {
           $location.path('/admin/departments');
-        });
+        })
+          .error(function (data, status, headers, config) {
+            $location.path('/admin/departments');
+          });
       }
       else {
         restDepartments.create($scope.department, function(){
           $location.path('/admin/departments');
-        });
+        },
+          function(){
+            $location.path('/admin/departments');
+          });
       }
     };
 

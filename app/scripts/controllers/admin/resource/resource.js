@@ -31,12 +31,18 @@ angular.module('dnuApp')
           fileFormDataName: filesFormDataName
         }).success(function (data, status, headers, config) {
           $location.path('/admin/resources');
-        });
+        })
+          .error(function (data, status, headers, config) {
+            $location.path('/admin/resources');
+          });
       }
       else {
         restResource.update($scope.resource, function () {
           $location.path('/admin/resources');
-        });
+        },
+          function () {
+            $location.path('/admin/resources');
+          });
       }
 
       $location.path('/admin/resources');
@@ -81,12 +87,18 @@ angular.module('dnuApp')
           fileFormDataName: ['image', 'file']
         }).success(function (data, status, headers, config) {
           $location.path('/admin/resources');
-        });
+        })
+          .error(function (data, status, headers, config) {
+            $location.path('/admin/resources');
+          });
       }
       else {
         restResources.create($scope.resource, function () {
-
-        });
+          $location.path('/admin/resources');
+        },
+          function () {
+            $location.path('/admin/resources');
+          });
       }
     };
 

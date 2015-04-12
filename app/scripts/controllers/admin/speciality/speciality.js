@@ -8,9 +8,32 @@
  * Controller of the angularApp
  */
 angular.module('dnuApp')
-  .controller('SpecialityAdminEditCtrl', function ($scope, $rootScope, $location, $routeParams, restSpeciality, restTeachers) {
+  .controller('SpecialityAdminEditCtrl', function ($scope, $rootScope, $location, $upload, $routeParams, restSpeciality, restTeachers) {
     $scope.save = function() {
-      restSpeciality.update($scope.speciality);
+      if ($scope.speciality.image !== undefined && $scope.speciality.image[0] !== undefined) {
+        var files = [],
+          filesFormDataName = [];
+
+        if ($scope.speciality.image[0] !== undefined) {
+          files.push($scope.speciality.image[0]);
+          filesFormDataName.push('image');
+        }
+
+        $scope.upload = $upload.upload({
+          url: 'http://' + $rootScope.serviceIp + ':8080/filestorage/rest/speciality/' + $scope.speciality.id,
+          method: 'PUT',
+          data: {resource: $scope.speciality},
+          file: files,
+          fileFormDataName: ['image']
+        }).success(function (data, status, headers, config) {
+          $location.path('/admin/specialities');
+        });
+      }
+      else {
+         restSpeciality.update($scope.speciality, function(){
+          $location.path('/admin/specialities');
+        });
+      }
       $location.path('/admin/specialities');
     };
 
@@ -29,11 +52,34 @@ angular.module('dnuApp')
   });
 
 angular.module('dnuApp')
-  .controller('SpecialityAdminCreateCtrl', function ($scope, $rootScope, $location, $routeParams, restSpecialities, restTeachers) {
+  .controller('SpecialityAdminCreateCtrl', function ($scope, $rootScope, $location, $upload, $routeParams, restSpecialities, restTeachers) {
+
     $scope.save = function() {
-      restSpecialities.create($scope.speciality, function(){
-        $location.path('/admin/specialities');
-      });
+      if ($scope.speciality.image !== undefined) {
+        var files = [],
+          filesFormDataName = [];
+
+        if ($scope.speciality.image[0] !== undefined) {
+          files.push($scope.speciality.image[0]);
+          filesFormDataName.push('image');
+        }
+
+        $scope.upload = $upload.upload({
+          url: 'http://' + $rootScope.serviceIp + ':8080/filestorage/rest/speciality/',
+          method: 'POST',
+          data: {resource: $scope.speciality},
+          file: files,
+          fileFormDataName: ['image']
+        }).success(function (data, status, headers, config) {
+          $location.path('/admin/specialities');
+        });
+      }
+      else {
+        restSpecialities.create($scope.speciality, function(){
+          $location.path('/admin/specialities');
+        });
+      }
+
     };
 
     $scope.supervisors = restTeachers.list();
