@@ -13,11 +13,12 @@ angular.module('dnuApp')
     $scope.editFaculty = function (facultyId) {
       $location.path('/admin/faculty/' + facultyId);
     };
-    
+
     // callback for ng-click 'deleteResource':
     $scope.deleteFaculty = function (facultyId) {
-      restFaculty.delete({ id: facultyId });
-      $scope.faculties = restFaculties.list();
+      restFaculty.delete({ id: facultyId }, function(){
+        $scope.faculties = restFaculties.list();
+      });
     };
 
     // callback for ng-click 'createResource':

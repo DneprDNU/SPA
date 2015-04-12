@@ -26,12 +26,15 @@ angular.module('dnuApp')
           data: {resource: $scope.department},
           file: files,
           fileFormDataName: ['image']
+        }).success(function (data, status, headers, config) {
+          $location.path('/admin/departments');
         });
       }
       else {
-        restDepartment.create($scope.department);
+        restDepartment.create($scope.department, function(){
+          $location.path('/admin/departments');
+        });
       }
-      $location.path('/admin/departments');
     };
 
     $scope.cancel = function () {
@@ -39,9 +42,10 @@ angular.module('dnuApp')
     };
 
     $scope.department = restDepartment.get({id: $routeParams.id});
+    console.log($scope.department);
 
-    $scope.specialities = restSpecialities.list();
-    $scope.employees = restTeachers.list();
+    $scope.specialitiess = restSpecialities.list();
+    $scope.employeess = restTeachers.list();
     console.log($scope);
     // callback for ng-click 'createResource':
     $scope.createNewDepartment = function () {
@@ -52,6 +56,7 @@ angular.module('dnuApp')
 angular.module('dnuApp')
   .controller('DepartmentAdminCreateCtrl', function ($scope, $rootScope, $location, $routeParams, $upload, restDepartments, restSpecialities, restTeachers) {
     $scope.save = function() {
+
       //restDepartments.create($scope.department);
       if ($scope.department.image !== undefined) {
         var files = [],
@@ -68,18 +73,21 @@ angular.module('dnuApp')
           data: {resource: $scope.department},
           file: files,
           fileFormDataName: ['image']
+        }).success(function (data, status, headers, config) {
+          $location.path('/admin/departments');
         });
       }
       else {
-        restDepartments.create($scope.department);
+        restDepartments.create($scope.department, function(){
+          $location.path('/admin/departments');
+        });
       }
-      $location.path('/admin/departments');
     };
 
     $scope.department = {};
 
-    $scope.department.specialities = restSpecialities.list();
-    $scope.department.employees = restTeachers.list();
+    $scope.specialitiess = restSpecialities.list();
+    $scope.employeess = restTeachers.list();
 
     $scope.cancel = function () {
       $location.path('/admin/departments');

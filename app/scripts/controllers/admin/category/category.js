@@ -10,8 +10,9 @@
 angular.module('dnuApp')
   .controller('CategoryAdminEditCtrl', function ($scope, $location, $routeParams, restCategorie) {
     $scope.save = function() {
-      restCategorie.update($scope.category);
-      $location.path('/admin/categories');
+      restCategorie.update($scope.category, function(){
+        $location.path('/admin/categories');
+      });
     };
 
     $scope.cancel = function () {
@@ -29,8 +30,9 @@ angular.module('dnuApp')
 angular.module('dnuApp')
   .controller('CategoryAdminCreateCtrl', function ($scope, $location, $routeParams, restCategories) {
     $scope.save = function() {
-      restCategories.create($scope.category);
-      $location.path('/admin/categories');
+      restCategories.create($scope.category, function(){
+        $location.path('/admin/categories');
+      });
     };
 
     $scope.cancel = function () {

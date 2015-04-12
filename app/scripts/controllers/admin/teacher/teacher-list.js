@@ -16,8 +16,9 @@ angular.module('dnuApp')
 
     // callback for ng-click 'deleteResource':
     $scope.deleteTeacher = function (teacherId) {
-      restTeacher.delete({ id: teacherId });
-      $scope.faculties = restTeachers.list();
+      restTeacher.delete({ id: teacherId }, function(){
+        $scope.teachers = restTeachers.list();
+      });
     };
 
     // callback for ng-click 'createResource':

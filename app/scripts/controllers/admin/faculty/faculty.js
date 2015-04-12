@@ -26,12 +26,16 @@ angular.module('dnuApp')
           data: {resource: $scope.faculty},
           file: files,
           fileFormDataName: ['image']
+        }).success(function (data, status, headers, config) {
+          $location.path('/admin/faculties');
         });
       }
       else {
-        restFaculties.create($scope.faculty);
+        restFaculties.create($scope.faculty, function(){
+          $location.path('/admin/faculties');
+        });
       }
-      $location.path('/admin/faculties');
+
     };
 
     $scope.cancel = function () {
@@ -66,13 +70,15 @@ angular.module('dnuApp')
           data: {resource: $scope.faculty},
           file: files,
           fileFormDataName: ['image']
+        }).success(function (data, status, headers, config) {
+          $location.path('/admin/faculties');
         });
       }
       else {
-        restFaculties.create($scope.faculty);
+        restFaculties.create($scope.faculty, function(){
+          $location.path('/admin/faculties');
+        });
       }
-
-      $location.path('/admin/faculties');
     };
     $scope.departments = restDepartments.list();
 

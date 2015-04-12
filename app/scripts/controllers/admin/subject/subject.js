@@ -8,7 +8,7 @@
  * Controller of the angularApp
  */
 angular.module('dnuApp')
-  .controller('SubjectAdminEditCtrl', function ($scope, $rootScope, $location, $upload, $routeParams, restSubject, restTeachers) {
+  .controller('SubjectAdminEditCtrl', function ($scope, $rootScope, $location, $upload, $routeParams, restSubject, restTeachers, restResources) {
     $scope.save = function() {
       //restSubject.update($scope.subject);
       if ($scope.subject.image !== undefined) {
@@ -26,12 +26,16 @@ angular.module('dnuApp')
           data: {resource: $scope.subject},
           file: files,
           fileFormDataName: ['image']
+        }).success(function (data, status, headers, config) {
+          $location.path('/admin/subjects');
         });
       }
       else {
-        restSubject.update($scope.subject);
+        restSubject.update($scope.subject, function(){
+          $location.path('/admin/subjects');
+        });
       }
-      $location.path('/admin/subjects');
+
     };
 
     $scope.cancel = function () {
@@ -41,6 +45,7 @@ angular.module('dnuApp')
     $scope.subject = restSubject.get({id: $routeParams.id});
 
     $scope.supervisors = restTeachers.list();
+    $scope.resources = restResources.list();
 
     // callback for ng-click 'createResource':
     $scope.createNewSubject = function () {
@@ -67,17 +72,20 @@ angular.module('dnuApp')
           data: {resource: $scope.subject},
           file: files,
           fileFormDataName: ['image']
+        }).success(function (data, status, headers, config) {
+          $location.path('/admin/subjects');
         });
       }
       else {
-        restSubjects.create($scope.subject);
+        restSubjects.create($scope.subject, function(){
+          $location.path('/admin/subjects');
+        });
       }
 
-      $location.path('/admin/subjects');
     };
 
     $scope.subject = {};
-    $scope.subject.resources = restResources.list();
+    $scope.resources = restResources.list();
     $scope.supervisors = restTeachers.list();
 
     $scope.cancel = function () {
