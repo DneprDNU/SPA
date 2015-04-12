@@ -9,16 +9,16 @@
  */
 angular.module('dnuApp')
   .controller('ResourceAdminEditCtrl', function ($scope, $rootScope, $location, $routeParams, $upload, restResource, restCategories, restSubjects) {
-    $scope.save = function() {
+    $scope.save = function () {
       if ($scope.resource.image !== undefined || $scope.resource.file !== undefined) {
         var files = [],
           filesFormDataName = [];
 
-        if ($scope.resource.image[0] !== undefined) {
+        if ($scope.resource.image !== undefined && $scope.resource.image[0] !== undefined) {
           files.push($scope.resource.image[0]);
           filesFormDataName.push('image');
         }
-        if ($scope.resource.file[0] !== undefined) {
+        if ($scope.resource.file !== undefined && $scope.resource.file[0] !== undefined) {
           files.push($scope.resource.file[0]);
           filesFormDataName.push('file');
         }
@@ -28,11 +28,15 @@ angular.module('dnuApp')
           method: 'PUT',
           data: {resource: $scope.resource},
           file: files,
-          fileFormDataName: ['image', 'file']
+          fileFormDataName: filesFormDataName
+        }).success(function (data, status, headers, config) {
+          $location.path('/admin/resources');
         });
       }
       else {
-        restResource.update($scope.resource);
+        restResource.update($scope.resource, function () {
+          $location.path('/admin/resources');
+        });
       }
 
       $location.path('/admin/resources');
@@ -55,7 +59,7 @@ angular.module('dnuApp')
 
 angular.module('dnuApp')
   .controller('ResourceAdminCreateCtrl', function ($scope, $rootScope, $location, $routeParams, $upload, restResources, restCategories, restSubjects) {
-    $scope.save = function() {
+    $scope.save = function () {
       if ($scope.resource.image !== undefined || $scope.resource.file !== undefined) {
         var files = [],
           filesFormDataName = [];
@@ -75,13 +79,15 @@ angular.module('dnuApp')
           data: {resource: $scope.resource},
           file: files,
           fileFormDataName: ['image', 'file']
+        }).success(function (data, status, headers, config) {
+          $location.path('/admin/resources');
         });
       }
       else {
-        restResources.create($scope.resource);
-      }
+        restResources.create($scope.resource, function () {
 
-      $location.path('/admin/resources');
+        });
+      }
     };
 
     $scope.categories = restCategories.list();

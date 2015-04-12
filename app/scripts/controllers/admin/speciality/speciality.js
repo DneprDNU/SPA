@@ -31,8 +31,9 @@ angular.module('dnuApp')
 angular.module('dnuApp')
   .controller('SpecialityAdminCreateCtrl', function ($scope, $rootScope, $location, $routeParams, restSpecialities, restTeachers) {
     $scope.save = function() {
-      restSpecialities.create($scope.speciality);
-      $location.path('/admin/specialities');
+      restSpecialities.create($scope.speciality, function(){
+        $location.path('/admin/specialities');
+      });
     };
 
     $scope.supervisors = restTeachers.list();

@@ -308,7 +308,7 @@ angular
       delete $rootScope.user;
       delete $rootScope.authToken;
       $cookieStore.remove('authToken');
-      $location.path("/login");
+      $rootScope.loggedIn = true;
     };
 
     /* Try getting valid user from cookie or go to login page */
