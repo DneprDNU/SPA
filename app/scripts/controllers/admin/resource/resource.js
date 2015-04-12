@@ -64,11 +64,11 @@ angular.module('dnuApp')
         var files = [],
           filesFormDataName = [];
 
-        if ($scope.resource.image[0] !== undefined) {
+        if ($scope.resource.image !== undefined && $scope.resource.image[0] !== undefined) {
           files.push($scope.resource.image[0]);
           filesFormDataName.push('image');
         }
-        if ($scope.resource.file[0] !== undefined) {
+        if ($scope.resource.file !== undefined && $scope.resource.file[0] !== undefined) {
           files.push($scope.resource.file[0]);
           filesFormDataName.push('file');
         }
