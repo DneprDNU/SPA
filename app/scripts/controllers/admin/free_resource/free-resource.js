@@ -33,9 +33,10 @@ angular.module('dnuApp')
 angular.module('dnuApp')
   .controller('FreeResourceAdminCreateCtrl', function ($scope, $location, $routeParams, restFreeResources, restCategories, restSubjects) {
     $scope.save = function() {
-      restFreeResources.create($scope.freeResource);
+      restFreeResources.create($scope.freeResource, function(){
+        $location.path('/admin/free-resources');
+      });
 
-      $location.path('/admin/free-resources');
     };
 
     $scope.categories = restCategories.list();

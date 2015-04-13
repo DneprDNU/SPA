@@ -8,7 +8,7 @@
  * Controller of the angularApp
  */
 angular.module('dnuApp')
-  .controller('FreeResourceAdminListCtrl', function ($scope, $location, restFreeResources, restResource, $routeParams) {
+  .controller('FreeResourceAdminListCtrl', function ($scope, $location, restFreeResources, restFreeResource, $routeParams) {
     // callback for ng-click 'editResource':
     $scope.editResource = function (freeResourceId) {
       $location.path('/admin/free-resource/' + freeResourceId);
@@ -16,8 +16,9 @@ angular.module('dnuApp')
 
     // callback for ng-click 'deleteResource':
     $scope.deleteResource = function (freeResourceId) {
-      restResource.delete({ id: freeResourceId });
-      $scope.freeResources = restFreeResources.list();
+      restFreeResource.delete({ id: freeResourceId }, function(){
+        $scope.freeResources = restFreeResources.list();
+      });
     };
 
     // callback for ng-click 'createResource':
