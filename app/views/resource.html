@@ -14,7 +14,7 @@
     <dd>{{ resource.subjects[0].name }}</dd>
     <dt>Опис</dt>
     <dd>{{ resource.description }}</dd>
-    <dt>Зкачати</dt>
-    <dd ng-if="isLoggedIn"><a href="{{ resource.resource }}">{{ resource.resource }}</a></dd>
+    <dt>Завантажити</dt>
+    <dd ng-if="$root.user"><a ng-href="{{ resource.resource }}">{{ resource.resource }}</a></dd>
   </dl>
 </div>

@@ -38,7 +38,7 @@
         <li><a href="#free-resources">Відкриті ресурси</a></li>
         <li><a href="#auth" ng-if="$root.loggedIn">Авторизація</a></li>
         <li><a href="#about">Інформація</a></li>
-        <li><a href="#admin">Адмiнiстрування</a></li>
+        <li><a href="#admin" ng-hide="$root.loggedIn">Адмiнiстрування</a></li>
         <li><a href="#/" ng-hide="$root.loggedIn" ng-click="logout()" class="ng-hide">Вийти</a></li>
       </ul>
     </div>

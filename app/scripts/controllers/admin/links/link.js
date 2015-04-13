@@ -32,8 +32,9 @@ angular.module('dnuApp')
 angular.module('dnuApp')
   .controller('LinkAdminCreateCtrl', function ($scope, $location, restSpecialities, restSubjects, restTeachers, $routeParams, restLinks) {
     $scope.save = function() {
-      restLinks.create($scope.link);
-      $location.path('/admin/links');
+      restLinks.create($scope.link, function () {
+        $location.path('/admin/links');
+      });
     };
 
     $scope.specialities = restSpecialities.list();
@@ -43,6 +44,4 @@ angular.module('dnuApp')
     $scope.cancel = function () {
       $location.path('/admin/links');
     };
-
-    console.log($scope);
   });

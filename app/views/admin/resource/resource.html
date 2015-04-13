@@ -30,21 +30,28 @@
     <label for="year">Рік</label>
     <input type="text" class="form-control" id="year" placeholder="Введіть рік" ng-model="resource.year">
   </div>
-  <div class="form-group">
-    <label for="resource-file">Зображення ресурсу</label>
-    <input type="file" id="resource-image" ng-model="resource.image" ng-file-select ng-multiple="false" ng-file-change="fileSelected($files, $event)" name="image" required>
-    <!--<p class="help-block">Upload resource image.</p>-->
-  </div>
   <div ng-if="resource === undefined || resource.image === undefined || resource.image.length === 0">
+    <div class="form-group">
       <img src="http://cumbrianrun.co.uk/wp-content/uploads/2014/02/default-placeholder.png" width="200" height="200" />
+
+      <label for="resource-file">Зображення ресурсу</label>
+      <input type="file" id="resource-image" ng-model="resource.image" ng-file-select ng-multiple="false" ng-file-change="fileSelected($files, $event)" name="image" required>
     </div>
+  </div>
   <div ng-if="resource !== undefined && resource.image.length > 0">
       <img src="{{ resource.image }}" width="200" height="200" />
+  </div>
+  <div ng-if="resource === undefined || resource.file === undefined || resource.file.length === 0">
+    <div class="form-group">
+      <label for="resource-file">Файл ресурсу</label>
+      <input type="file" id="resource-file" ng-model="resource.file" ng-file-select ng-multiple="false" ng-file-change="fileSelected($files, $event)" name="file" required>
     </div>
-  <div class="form-group">
-    <label for="resource-file">Файл ресурсу</label>
-    <input type="file" id="resource-file" ng-model="resource.file" ng-file-select ng-multiple="false" ng-file-change="fileSelected($files, $event)" name="file" required>
-    <!--<p class="help-block">Upload resource image.</p>-->
+  </div>
+  <div ng-if="resource !== undefined && resource.image.length > 0">
+    <div class="form-group">
+      <label for="resource-file">Файл ресурсу</label>
+      <input type="file" id="resource-file" ng-model="resource.file" ng-file-select ng-multiple="false" ng-file-change="fileSelected($files, $event)" name="file" required>
+    </div>
   </div>
   <div class="control-group">
     <div class="controls">

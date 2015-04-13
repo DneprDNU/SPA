@@ -13,10 +13,9 @@ angular.module('dnuApp')
     $scope.editDepartment = function (departmentId) {
       $location.path('/admin/department/' + departmentId);
     };
-    console.log($routeParams);
     // callback for ng-click 'deleteResource':
     $scope.deleteDepartment = function (departmentId) {
-      restDepartment.delete({ id: departmentId }, function(){
+      restDepartment.delete({ id: departmentId }, function() {
         $scope.departments = restDepartments.list({adminMode: 1});
       });
     };

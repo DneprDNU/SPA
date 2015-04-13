@@ -8,7 +8,7 @@
  * Controller of the angularApp
  */
 angular.module('dnuApp')
-  .controller('ResourcesCtrl', function ($scope, $routeParams, restSearch, restResources) {
+  .controller('ResourcesCtrl', function ($scope, $rootScope, $routeParams, restSearch, restResources) {
     if ($routeParams.search !== undefined) {
       $scope.resources = restSearch.search({searchKey: $routeParams.search});
     }
@@ -27,10 +27,7 @@ angular.module('dnuApp')
 
 angular.module('dnuApp')
   .controller('ResourceCtrl', function ($scope, $rootScope, $routeParams, restResource, restAuthentication ) {
-    restAuthentication.get(function(user) {
-      $rootScope.user = user;
-      $scope.isLoggedIn = $rootScope.user.roles !== undefined;
-      $scope.resource = restResource.get({id: $routeParams.id});
-    });
+    $scope.isLoggedIn = $rootScope.user;
+    $scope.resource = restResource.get({id: $routeParams.id});
   });
 

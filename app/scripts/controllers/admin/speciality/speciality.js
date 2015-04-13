@@ -8,7 +8,7 @@
  * Controller of the angularApp
  */
 angular.module('dnuApp')
-  .controller('SpecialityAdminEditCtrl', function ($scope, $rootScope, $location, $upload, $routeParams, restSpeciality, restTeachers) {
+  .controller('SpecialityAdminEditCtrl', function ($scope, $rootScope, $location, $upload, $routeParams, restSpeciality, restDepartments, restTeachers) {
     $scope.save = function() {
       if ($scope.speciality.image !== undefined && $scope.speciality.image[0] !== undefined) {
         var files = [],
@@ -44,6 +44,7 @@ angular.module('dnuApp')
     $scope.speciality = restSpeciality.get({id: $routeParams.id});
 
     $scope.supervisors = restTeachers.list();
+    $scope.departments = restTeachers.list();
 
     // callback for ng-click 'createResource':
     $scope.createNewSpeciality = function () {
