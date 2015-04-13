@@ -41,16 +41,16 @@
   <div ng-if="resource !== undefined && resource.image.length > 0">
       <img src="{{ resource.image }}" width="200" height="200" />
   </div>
-  <div ng-if="resource === undefined || resource.file === undefined || resource.file.length === 0">
+  <div ng-if="resource === undefined || resource.fileR === undefined || resource.fileR.length === 0">
     <div class="form-group">
       <label for="resource-file">Файл ресурсу</label>
-      <input type="file" id="resource-file" ng-model="resource.file" ng-file-select ng-multiple="false" ng-file-change="fileSelected($files, $event)" name="file" required>
+      <input type="file" id="resource-file" ng-model="resource.fileR" ng-file-select ng-multiple="false" ng-file-change="fileSelected($files, $event)" name="file" required>
     </div>
   </div>
   <div ng-if="resource !== undefined && resource.image.length > 0">
     <div class="form-group">
       <label for="resource-file">Файл ресурсу</label>
-      <input type="file" id="resource-file" ng-model="resource.file" ng-file-select ng-multiple="false" ng-file-change="fileSelected($files, $event)" name="file" required>
+      <input type="file" id="resource-file" ng-model="resource.fileR" ng-file-select ng-multiple="false" ng-file-change="fileSelected($files, $event)" name="file" required>
     </div>
   </div>
   <div class="control-group">

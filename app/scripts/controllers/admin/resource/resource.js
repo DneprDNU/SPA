@@ -10,7 +10,7 @@
 angular.module('dnuApp')
   .controller('ResourceAdminEditCtrl', function ($scope, $rootScope, $location, $routeParams, $upload, restResource, restCategories, restSubjects) {
     $scope.save = function () {
-      if ($scope.resource.image !== undefined || $scope.resource.file !== undefined) {
+      if ($scope.resource.image !== undefined || $scope.resource.fileR !== undefined) {
         var files = [],
           filesFormDataName = [];
 
@@ -18,8 +18,8 @@ angular.module('dnuApp')
           files.push($scope.resource.image[0]);
           filesFormDataName.push('image');
         }
-        if ($scope.resource.file !== undefined && $scope.resource.file[0] !== undefined) {
-          files.push($scope.resource.file[0]);
+        if ($scope.resource.fileR !== undefined && $scope.resource.fileR[0] !== undefined) {
+          files.push($scope.resource.fileR[0]);
           filesFormDataName.push('file');
         }
 
@@ -66,7 +66,7 @@ angular.module('dnuApp')
 angular.module('dnuApp')
   .controller('ResourceAdminCreateCtrl', function ($scope, $rootScope, $location, $routeParams, $upload, restResources, restCategories, restSubjects) {
     $scope.save = function () {
-      if ($scope.resource.image !== undefined || $scope.resource.file !== undefined) {
+      if ($scope.resource.image !== undefined || $scope.resource.fileR !== undefined) {
         var files = [],
           filesFormDataName = [];
 
@@ -74,8 +74,8 @@ angular.module('dnuApp')
           files.push($scope.resource.image[0]);
           filesFormDataName.push('image');
         }
-        if ($scope.resource.file !== undefined && $scope.resource.file[0] !== undefined) {
-          files.push($scope.resource.file[0]);
+        if ($scope.resource.fileR !== undefined && $scope.resource.fileR[0] !== undefined) {
+          files.push($scope.resource.fileR[0]);
           filesFormDataName.push('file');
         }
 
