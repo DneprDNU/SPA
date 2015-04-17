@@ -11,10 +11,10 @@
     <dt>Тип</dt>
     <dd>Книга</dd>
     <dt>Спеціальність</dt>
-    <dd>{{ resource.subjects[0].name }}</dd>
+    <dd>{{ resource.speciality }}</dd>
     <dt>Опис</dt>
     <dd>{{ resource.description }}</dd>
-    <dt>Зкачати</dt>
+    <dt>Завантажити</dt>
     <dd ng-if="$root.user"><a ng-href="{{ resource.fileR }}">{{ resource.fileR }}</a></dd>
   </dl>
 </div>

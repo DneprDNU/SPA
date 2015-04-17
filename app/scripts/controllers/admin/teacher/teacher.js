@@ -72,12 +72,18 @@ angular.module('dnuApp')
           fileFormDataName: ['image']
         }).success(function (data, status, headers, config) {
           $location.path('/admin/teachers');
-        });
+        })
+          .error(function (data, status, headers, config) {
+            $location.path('/admin/teachers');
+          });
       }
       else {
         restTeachers.create($scope.teacher, function(){
           $location.path('/admin/teachers');
-        });
+        },
+          function(){
+            $location.path('/admin/teachers');
+          });
       }
 
     };

@@ -28,12 +28,18 @@ angular.module('dnuApp')
           fileFormDataName: ['image']
         }).success(function (data, status, headers, config) {
           $location.path('/admin/subjects');
-        });
+        })
+          .error(function (data, status, headers, config) {
+            $location.path('/admin/subjects');
+          });
       }
       else {
-        restSubject.update($scope.subject, function(){
-          $location.path('/admin/subjects');
-        });
+        restSubject.update($scope.subject, function () {
+            $location.path('/admin/subjects');
+          },
+          function () {
+            $location.path('/admin/subjects');
+          });
       }
 
     };

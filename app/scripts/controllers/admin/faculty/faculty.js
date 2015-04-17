@@ -28,12 +28,18 @@ angular.module('dnuApp')
           fileFormDataName: ['image']
         }).success(function (data, status, headers, config) {
           $location.path('/admin/faculties');
-        });
+        })
+          .error(function (data, status, headers, config) {
+            $location.path('/admin/faculties');
+          });
       }
       else {
         restFaculties.create($scope.faculty, function(){
           $location.path('/admin/faculties');
-        });
+        },
+          function(){
+            $location.path('/admin/faculties');
+          });
       }
 
     };
