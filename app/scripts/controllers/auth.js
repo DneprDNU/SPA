@@ -1,15 +1,7 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name dnuApp.controller:AboutCtrl
- * @description
- * # AboutCtrl
- * Controller of the angularApp
- */
 angular.module('dnuApp')
-  .controller('AuthCtrl', function ($scope, $rootScope, $location, $cookieStore, restAuthentication) {
-    $scope.rememberMe = false;
+  .controller('AuthCtrl', function ($scope, $rootScope, $location, $cookieStore, restAuthentication, AuthService, AUTH_EVENTS, USER_ROLES) {
     $scope.login = function() {
       restAuthentication.authenticate($.param({username: $scope.username, password: $scope.password}), function(authenticationResult) {
         var authToken = authenticationResult.token;
@@ -18,9 +10,17 @@ angular.module('dnuApp')
           $cookieStore.put('authToken', authToken);
           $rootScope.loggedIn = false;
         }
-        restAuthentication.get(function(user) {
+        AuthService.login({username: $scope.username, password: $scope.password}).then(function (user) {
+          $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
           $rootScope.user = user;
-          $location.path("/");
+          if (AuthService.isAdmin()) {
+            $location.path('/admin');
+          }
+          else {
+            $location.path('/');
+          }
+        }, function () {
+          $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
         });
       });
     };

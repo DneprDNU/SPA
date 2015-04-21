@@ -31,5 +31,4 @@ angular.module('dnuApp')
     $scope.faculty = restFaculty.get({id: $routeParams.facultyId});
     $scope.subjects = restSubjects.list({departmentId: $routeParams.id});
     $scope.teachers = $scope.speciality.supervisors;
-    console.log($scope.speciality.supervisors);
   });

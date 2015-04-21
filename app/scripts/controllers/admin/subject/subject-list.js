@@ -45,10 +45,10 @@ angular.module('dnuApp')
       var from = ($routeParams.page - 1) * 10;
       var to = $routeParams.page * 10;
 
-      $scope.subjects = restSubjects.list({adminMode: 1, from: from, to: to});
+      $scope.subjects = restSubjects.admin_list({from: from, to: to});
     }
     else {
-      $scope.subjects = restSubjects.list({adminMode: 1, from: 0, to: 10});
+      $scope.subjects = restSubjects.admin_list({from: 0, to: 10});
     }
 
   });

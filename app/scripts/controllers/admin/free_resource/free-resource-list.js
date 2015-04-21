@@ -45,9 +45,9 @@ angular.module('dnuApp')
       var from = ($routeParams.page - 1) * 10;
       var to = $routeParams.page * 10;
 
-      $scope.freeResources = restFreeResources.list({adminMode: 1, from: from, to: to});
+      $scope.freeResources = restFreeResources.admin_list({from: from, to: to});
     }
     else {
-      $scope.freeResources = restFreeResources.list({adminMode: 1, from: 0, to: 10});
+      $scope.freeResources = restFreeResources.admin_list({from: 0, to: 10});
     }
   });

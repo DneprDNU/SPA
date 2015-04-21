@@ -5,12 +5,12 @@
   </div>
   <div class="form-group">
     <label for="specialities">Спеціальність</label>
-    <select id="specialities" ng-options="item.name for item in specialitiess track by item.id" ng-model="department.specialities" multiple bootstrap-select>
+    <select id="specialities" ng-options="item.name for item in specialitiess track by item.id" ng-model="department.specialities" multiple bootstrap-select title="Оберіть спеціальність">
     </select>
   </div>
   <div class="form-group">
     <label for="employees">Викладачі</label>
-    <select id="employees" ng-options="item.name for item in employeess track by item.id" ng-model="department.employees" multiple bootstrap-select>
+    <select id="employees" ng-options="item.name for item in employeess track by item.id" ng-model="department.employees" multiple bootstrap-select title="Оберіть викладачів">
     </select>
   </div>
   <div ng-if="department === undefined || department.image === undefined || department.image.length === 0">

@@ -10,14 +10,12 @@
 angular.module('dnuApp')
   .controller('SpecialityAdminEditCtrl', function ($scope, $rootScope, $location, $upload, $routeParams, restSpeciality, restDepartments, restTeachers) {
     $scope.save = function() {
-      if ($scope.speciality.image !== undefined && $scope.speciality.image[0] !== undefined) {
+      if (angular.isArray($scope.speciality.image)) {
         var files = [],
           filesFormDataName = [];
 
-        if ($scope.speciality.image[0] !== undefined) {
-          files.push($scope.speciality.image[0]);
-          filesFormDataName.push('image');
-        }
+        files.push($scope.speciality.image[0]);
+        filesFormDataName.push('image');
 
         $scope.upload = $upload.upload({
           url: 'http://' + $rootScope.serviceIp + ':8080/filestorage/rest/speciality/' + $scope.speciality.id,
@@ -30,7 +28,7 @@ angular.module('dnuApp')
         });
       }
       else {
-         restSpeciality.update($scope.speciality, function(){
+        restSpeciality.update($scope.speciality, function(){
           $location.path('/admin/specialities');
         });
       }
@@ -56,14 +54,12 @@ angular.module('dnuApp')
   .controller('SpecialityAdminCreateCtrl', function ($scope, $rootScope, $location, $upload, $routeParams, restSpecialities, restTeachers) {
 
     $scope.save = function() {
-      if ($scope.speciality.image !== undefined) {
+      if (angular.isArray($scope.speciality.image)) {
         var files = [],
           filesFormDataName = [];
 
-        if ($scope.speciality.image[0] !== undefined) {
-          files.push($scope.speciality.image[0]);
-          filesFormDataName.push('image');
-        }
+        files.push($scope.speciality.image[0]);
+        filesFormDataName.push('image');
 
         $scope.upload = $upload.upload({
           url: 'http://' + $rootScope.serviceIp + ':8080/filestorage/rest/speciality/',
@@ -71,7 +67,7 @@ angular.module('dnuApp')
           data: {resource: $scope.speciality},
           file: files,
           fileFormDataName: ['image']
-        }).success(function (data, status, headers, config) {
+        }).success(function () {
           $location.path('/admin/specialities');
         });
       }

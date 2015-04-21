@@ -11,14 +11,12 @@ angular.module('dnuApp')
   .controller('SubjectAdminEditCtrl', function ($scope, $rootScope, $location, $upload, $routeParams, restSubject, restTeachers, restResources) {
     $scope.save = function() {
       //restSubject.update($scope.subject);
-      if ($scope.subject.image !== undefined) {
+      if (angular.isArray($scope.subject.image)) {
         var files = [],
           filesFormDataName = [];
 
-        if ($scope.subject.image[0] !== undefined) {
-          files.push($scope.subject.image[0]);
-          filesFormDataName.push('image');
-        }
+        files.push($scope.subject.image[0]);
+        filesFormDataName.push('image');
 
         $scope.upload = $upload.upload({
           url: 'http://' + $rootScope.serviceIp + ':8080/filestorage/rest/subject/' + $scope.subject.id,
@@ -29,17 +27,17 @@ angular.module('dnuApp')
         }).success(function (data, status, headers, config) {
           $location.path('/admin/subjects');
         })
-          .error(function (data, status, headers, config) {
-            $location.path('/admin/subjects');
-          });
+        .error(function (data, status, headers, config) {
+          $location.path('/admin/subjects');
+        });
       }
       else {
         restSubject.update($scope.subject, function () {
-            $location.path('/admin/subjects');
-          },
-          function () {
-            $location.path('/admin/subjects');
-          });
+          $location.path('/admin/subjects');
+        },
+        function () {
+          $location.path('/admin/subjects');
+        });
       }
 
     };
@@ -63,14 +61,12 @@ angular.module('dnuApp')
   .controller('SubjectAdminCreateCtrl', function ($scope, $rootScope, $location, $upload, $routeParams, restSubjects, restTeachers, restResources) {
 
     $scope.save = function() {
-      if ($scope.subject.image !== undefined) {
+      if (angular.isArray($scope.subject.image)) {
         var files = [],
           filesFormDataName = [];
 
-        if ($scope.subject.image[0] !== undefined) {
-          files.push($scope.subject.image[0]);
-          filesFormDataName.push('image');
-        }
+        files.push($scope.subject.image[0]);
+        filesFormDataName.push('image');
 
         $scope.upload = $upload.upload({
           url: 'http://' + $rootScope.serviceIp + ':8080/filestorage/rest/subject/',
@@ -87,7 +83,6 @@ angular.module('dnuApp')
           $location.path('/admin/subjects');
         });
       }
-
     };
 
     $scope.subject = {};

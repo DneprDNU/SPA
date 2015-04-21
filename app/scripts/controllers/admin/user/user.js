@@ -18,6 +18,20 @@ angular.module('dnuApp')
       $location.path('/admin/users');
     };
 
+    $scope.roles = [
+      {
+        id: "ROLE_ADMIN",
+        name: "Адміністратор факультету"
+      },
+      {
+        id: "ROLE_SUPERADMIN",
+        name: "Адміністратор репозиторію"
+      },
+      {
+        id: "ROLE_USER",
+        name: "Простий користувач"
+      }
+    ];
     $scope.userr = restUser.get({id: $routeParams.id});
     $scope.faculties = restFaculties.list();
 
@@ -32,7 +46,20 @@ angular.module('dnuApp')
       restUsers.create($scope.userr);
       $location.path('/admin/users');
     };
-
+    $scope.roles = [
+      {
+        id: "ROLE_ADMIN",
+        name: "Адміністратор факультету"
+      },
+      {
+        id: "ROLE_SUPERADMIN",
+        name: "Адміністратор репозиторію"
+      },
+      {
+        id: "ROLE_USER",
+        name: "Простий користувач"
+      }
+    ];
     $scope.faculties = restFaculties.list();
 
     $scope.cancel = function () {

@@ -1,15 +1,14 @@
 "use strict"
 
 angular.module('dnuApp')
-  .controller('AdminMenuCtrl', function ($scope, $rootScope, $location, restAuthentication) {
+  .controller('AdminMenuCtrl', function ($scope, $rootScope, $location, restAuthentication, AuthService) {
 
     restAuthentication.get(function(user) {
-      $rootScope.user = user;
-      if (!$rootScope.hasRole('ROLE_ADMIN') && !$rootScope.hasRole('ROLE_SUPERADMIN')) {
-        $location.path('/login');
+      if (!AuthService.isAdmin()) {
+        $location.path('/auth');
       }
-      $scope.isSuperAdmin = $rootScope.hasRole('ROLE_SUPERADMIN');
-      $scope.isAdmin = $rootScope.hasRole('ROLE_ADMIN') || $rootScope.hasRole('ROLE_SUPERADMIN');
+      $scope.isSuper = AuthService.isSuper();
+      $scope.isEditor = AuthService.isEditor();
     });
 
   });

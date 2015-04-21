@@ -11,14 +11,12 @@ angular.module('dnuApp')
   .controller('TeacherAdminEditCtrl', function ($scope, $rootScope, $location, $upload, $routeParams, restTeacher) {
     $scope.save = function() {
       //restTeachers.update($scope.teacher);
-      if ($scope.teacher.image !== undefined) {
+      if (angular.isArray($scope.teacher.image)) {
         var files = [],
           filesFormDataName = [];
 
-        if ($scope.teacher.image[0] !== undefined) {
-          files.push($scope.teacher.image[0]);
-          filesFormDataName.push('image');
-        }
+        files.push($scope.teacher.image[0]);
+        filesFormDataName.push('image');
 
         $scope.upload = $upload.upload({
           url: 'http://' + $rootScope.serviceIp + ':8080/filestorage/rest/teacher/'  + $scope.teacher.id,
@@ -52,17 +50,14 @@ angular.module('dnuApp')
 
 angular.module('dnuApp')
   .controller('TeacherAdminCreateCtrl', function ($scope, $rootScope, $location, $upload, $routeParams, restTeachers) {
-    console.log($scope);
 
     $scope.save = function() {
-      if ($scope.teacher.image !== undefined) {
+      if (angular.isArray($scope.teacher.image)) {
         var files = [],
           filesFormDataName = [];
 
-        if ($scope.teacher.image[0] !== undefined) {
-          files.push($scope.teacher.image[0]);
-          filesFormDataName.push('image');
-        }
+        files.push($scope.teacher.image[0]);
+        filesFormDataName.push('image');
 
         $scope.upload = $upload.upload({
           url: 'http://' + $rootScope.serviceIp + ':8080/filestorage/rest/teacher/',
@@ -72,18 +67,12 @@ angular.module('dnuApp')
           fileFormDataName: ['image']
         }).success(function (data, status, headers, config) {
           $location.path('/admin/teachers');
-        })
-          .error(function (data, status, headers, config) {
-            $location.path('/admin/teachers');
-          });
+        });
       }
       else {
         restTeachers.create($scope.teacher, function(){
           $location.path('/admin/teachers');
-        },
-          function(){
-            $location.path('/admin/teachers');
-          });
+        });
       }
 
     };

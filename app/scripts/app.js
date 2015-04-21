@@ -49,10 +49,6 @@ angular
         templateUrl: 'views/contact.html',
         controller: 'ContactCtrl'
       })
-      .when('/login', {
-        templateUrl: 'views/login.html',
-        controller: 'LoginCtrl'
-      })
       .when('/auth', {
         templateUrl: 'views/auth.html',
         controller: 'AuthCtrl'
@@ -258,7 +254,7 @@ angular
             var url = config.url;
 
             if (status == 401) {
-              $location.path( "/login" );
+              $location.path( "/auth" );
             } else {
               $rootScope.error = method + " on " + url + " failed with status " + status;
             }
@@ -275,12 +271,7 @@ angular
         return {
           'request': function(config) {
             if (angular.isDefined($rootScope.authToken)) {
-              var authToken = $rootScope.authToken;
-              //if (exampleAppConfig.useAuthTokenHeader) {
-                config.headers['X-Auth-Token'] = authToken;
-              //} else {
-              //  config.url = config.url + "?token=" + authToken;
-              //}
+              config.headers['X-Auth-Token'] = $rootScope.authToken;
             }
             return config || $q.when(config);
           }
@@ -289,60 +280,26 @@ angular
     );
 
   }])
-  .run(function($rootScope, $location, $cookieStore,$timeout, restAuthentication) {
-
+  .run(function($rootScope, $location, $cookieStore, AuthService, $route) {
     /* Reset error when a new view is loaded */
     $rootScope.$on('$viewContentLoaded', function() {
       delete $rootScope.error;
     });
 
-    $rootScope.hasRole = function(role, $q) {
-      if ($rootScope.user === undefined || $rootScope.user.roles === undefined) {
-        return false;
-      }
-
-      return $rootScope.user.roles.indexOf(role) !== -1;
-    };
-
-    $rootScope.logout = function() {
-      delete $rootScope.user;
-      delete $rootScope.authToken;
-      $cookieStore.remove('authToken');
-      $rootScope.loggedIn = true;
-    };
-
+    $rootScope.isLoggedIn = AuthService.isAuthenticated();
+    $rootScope.isSuper = AuthService.isSuper();
+    $rootScope.isAdmin = AuthService.isAdmin();
+    $rootScope.isEditor = AuthService.isEditor();
     /* Try getting valid user from cookie or go to login page */
-    var authToken = $cookieStore.get('authToken');
-    if (authToken !== undefined) {
-      $rootScope.authToken = authToken;
-      restAuthentication.get(function(user) {
-        $rootScope.user = user;
-        $rootScope.initialized = true;
-        $rootScope.loggedIn = user === undefined;
-      });
+    $rootScope.authToken = $cookieStore.get('authToken');
+    if ($rootScope.authToken !== undefined && !AuthService.isAuthenticated()) {
+      AuthService.login();
     }
-    $rootScope.loggedIn = (authToken === undefined);
-    $rootScope.userMenuActions = [ {
-      name : "menu.login",
-      href : "#/login",
-      roles : []
-    }, {
-      name : "menu.logout",
-      href : "#/logout",
-      roles : [ 'READ_ONLY', 'ADMIN' ]
-    }, {
-      name : "menu.foo",
-      href : "#/foo",
-      roles : [ 'READ_ONLY', 'ADMIN' ]
-    }, {
-      name : "menu.adminArea",
-      href : "#/adminArea",
-      roles : [ 'ADMIN' ]
-    } ];
 
     $rootScope.serviceIp = '212.3.125.102';
 
     $rootScope.updateIsotope = function() {
       window.dispatchEvent(new Event('resize'));
     };
+    $route.reload('main-menu');
   });

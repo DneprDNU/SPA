@@ -10,15 +10,15 @@
 angular.module('dnuApp')
   .controller('ResourceAdminEditCtrl', function ($scope, $rootScope, $location, $routeParams, $upload, restResource, restCategories, restSubjects) {
     $scope.save = function () {
-      if ($scope.resource.image !== undefined || $scope.resource.fileR !== undefined) {
+      if (angular.isArray($scope.resource.image) || angular.isArray($scope.resource.fileR)) {
         var files = [],
           filesFormDataName = [];
 
-        if ($scope.resource.image !== undefined && $scope.resource.image[0] !== undefined) {
+        if (angular.isArray($scope.resource.image)) {
           files.push($scope.resource.image[0]);
           filesFormDataName.push('image');
         }
-        if ($scope.resource.fileR !== undefined && $scope.resource.fileR[0] !== undefined) {
+        if (angular.isArray($scope.resource.fileR)) {
           files.push($scope.resource.fileR[0]);
           filesFormDataName.push('file');
         }
@@ -32,17 +32,17 @@ angular.module('dnuApp')
         }).success(function (data, status, headers, config) {
           $location.path('/admin/resources');
         })
-          .error(function (data, status, headers, config) {
-            $location.path('/admin/resources');
-          });
+        .error(function (data, status, headers, config) {
+          $location.path('/admin/resources');
+        });
       }
       else {
         restResource.update($scope.resource, function () {
           $location.path('/admin/resources');
         },
-          function () {
-            $location.path('/admin/resources');
-          });
+        function () {
+          $location.path('/admin/resources');
+        });
       }
 
       $location.path('/admin/resources');
@@ -66,15 +66,15 @@ angular.module('dnuApp')
 angular.module('dnuApp')
   .controller('ResourceAdminCreateCtrl', function ($scope, $rootScope, $location, $routeParams, $upload, restResources, restCategories, restSubjects) {
     $scope.save = function () {
-      if ($scope.resource.image !== undefined || $scope.resource.fileR !== undefined) {
+      if (angular.isArray($scope.resource.image) || angular.isArray($scope.resource.fileR)) {
         var files = [],
           filesFormDataName = [];
 
-        if ($scope.resource.image !== undefined && $scope.resource.image[0] !== undefined) {
+        if (angular.isArray($scope.resource.image)) {
           files.push($scope.resource.image[0]);
           filesFormDataName.push('image');
         }
-        if ($scope.resource.fileR !== undefined && $scope.resource.fileR[0] !== undefined) {
+        if (angular.isArray($scope.resource.fileR)) {
           files.push($scope.resource.fileR[0]);
           filesFormDataName.push('file');
         }
@@ -88,17 +88,17 @@ angular.module('dnuApp')
         }).success(function (data, status, headers, config) {
           $location.path('/admin/resources');
         })
-          .error(function (data, status, headers, config) {
-            $location.path('/admin/resources');
-          });
+        .error(function (data, status, headers, config) {
+          $location.path('/admin/resources');
+        });
       }
       else {
         restResources.create($scope.resource, function () {
           $location.path('/admin/resources');
         },
-          function () {
-            $location.path('/admin/resources');
-          });
+        function () {
+          $location.path('/admin/resources');
+        });
       }
     };
 

@@ -13,12 +13,12 @@
   </div>
   <div class="form-group">
     <label for="subjects">Предмети</label>
-    <select id="subjects" ng-options="item.name for item in subjects track by item.id" ng-model="resource.subjects" multiple bootstrap-select>
+    <select id="subjects" ng-options="item.name for item in subjects track by item.id" ng-model="resource.subjects" multiple bootstrap-select title="Оберіть Предмет">
     </select>
   </div>
   <div class="form-group">
     <label for="categories">Категорії</label>
-    <select id="categories" ng-options="item.name for item in categories track by item.id" ng-model="resource.categories" multiple bootstrap-select>
+    <select id="categories" ng-options="item.name for item in categories track by item.id" ng-model="resource.categories" multiple bootstrap-select title="Оберіть категорію">
     </select>
   </div>
   <div ng-switch on="resource">
@@ -40,7 +40,7 @@
     </div>
   <div ng-if="resource !== undefined && resource.image.length > 0">
       <img src="{{ resource.image }}" width="200" height="200" />
-    </div>
+  </div>
   <div class="form-group">
     <label for="resource-file">Файл ресурсу</label>
     <input type="file" id="resource-file" ng-model="resource.fileR" ng-file-select ng-multiple="false" ng-file-change="fileSelected($files, $event)" name="fileR" required>

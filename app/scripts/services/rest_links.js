@@ -30,6 +30,11 @@ angular.module('restLinkResource', ['ngResource'])
           method: 'GET',
           isArray: true
         },
+        admin_list: {
+          url: 'http://' + $rootScope.serviceIp + ':8080/filestorage/rest/links/filtered',
+          method: 'GET',
+          isArray: true
+        },
         create: {
           method: 'POST'
         },

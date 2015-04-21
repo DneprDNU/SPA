@@ -9,16 +9,18 @@
  */
 angular.module('dnuApp')
   .controller('DepartmentAdminEditCtrl', function ($scope, $rootScope, $location, $routeParams, $upload, restDepartment, restSpecialities, restTeachers) {
+    $scope.submitProgress = false;
+
     $scope.save = function() {
+      $scope.submitProgress = true;
+
       //restDepartment.update($scope.department);
-      if ($scope.department.image !== undefined) {
+      if (angular.isArray($scope.department.image)) {
         var files = [],
           filesFormDataName = [];
 
-        if ($scope.department.image[0] !== undefined) {
-          files.push($scope.department.image[0]);
-          filesFormDataName.push('image');
-        }
+        files.push($scope.department.image[0]);
+        filesFormDataName.push('image');
 
         $scope.upload = $upload.upload({
           url: 'http://' + $rootScope.serviceIp + ':8080/filestorage/rest/department/' + $scope.department.id,
@@ -29,16 +31,15 @@ angular.module('dnuApp')
         }).success(function (data, status, headers, config) {
           $location.path('/admin/departments');
         }).error(function (data, status, headers, config) {
-            $location.path('/admin/departments');
-          });
+          $location.path('/admin/departments');
+        });
       }
       else {
-        restDepartment.create($scope.department, function(){
+        restDepartment.update($scope.department, function(){
           $location.path('/admin/departments');
-        },
-          function(){
-            $location.path('/admin/departments');
-          });
+        }, function() {
+          $location.path('/admin/departments');
+        });
       }
     };
 
@@ -47,11 +48,9 @@ angular.module('dnuApp')
     };
 
     $scope.department = restDepartment.get({id: $routeParams.id});
-    console.log($scope.department);
 
     $scope.specialitiess = restSpecialities.list();
     $scope.employeess = restTeachers.list();
-    console.log($scope);
     // callback for ng-click 'createResource':
     $scope.createNewDepartment = function () {
       $location.path('/admin/departments');
@@ -63,14 +62,12 @@ angular.module('dnuApp')
     $scope.save = function() {
 
       //restDepartments.create($scope.department);
-      if ($scope.department.image !== undefined) {
+      if (angular.isArray($scope.department.image)) {
         var files = [],
           filesFormDataName = [];
 
-        if ($scope.department.image[0] !== undefined) {
-          files.push($scope.department.image[0]);
-          filesFormDataName.push('image');
-        }
+        files.push($scope.department.image[0]);
+        filesFormDataName.push('image');
 
         $scope.upload = $upload.upload({
           url: 'http://' + $rootScope.serviceIp + ':8080/filestorage/rest/department/',
@@ -78,20 +75,20 @@ angular.module('dnuApp')
           data: {resource: $scope.department},
           file: files,
           fileFormDataName: ['image']
-        }).success(function (data, status, headers, config) {
+        }).success(function () {
           $location.path('/admin/departments');
         })
-          .error(function (data, status, headers, config) {
-            $location.path('/admin/departments');
-          });
+        .error(function () {
+          $location.path('/admin/departments');
+        });
       }
       else {
         restDepartments.create($scope.department, function(){
           $location.path('/admin/departments');
         },
-          function(){
-            $location.path('/admin/departments');
-          });
+        function(){
+          $location.path('/admin/departments');
+        });
       }
     };
 

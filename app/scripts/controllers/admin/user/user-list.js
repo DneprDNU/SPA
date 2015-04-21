@@ -26,5 +26,5 @@ angular.module('dnuApp')
       $location.path('/admin/user');
     };
 
-    $scope.users = restUsers.list({adminMode: 1});
+    $scope.users = restUsers.admin_list();
   });

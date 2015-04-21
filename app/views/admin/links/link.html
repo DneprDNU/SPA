@@ -8,13 +8,13 @@
   <div class="form-group">
     <label for="subject">Предмет</label>
     <select id="subject" ng-options="item as item.name for item in subjects track by item.id"
-            ng-model="link.subject" bootstrap-select>
+            ng-model="link.subject" bootstrap-select title="Оберіть предмет">
     </select>
   </div>
   <div class="form-group">
     <label for="teacher">Викладач</label>
     <select id="teacher" ng-options="item as item.name for item in teachers track by item.id"
-            ng-model="link.teacher" bootstrap-select>
+            ng-model="link.teacher" bootstrap-select title="Оберіть викладача">
     </select>
   </div>
   <div class="control-group">

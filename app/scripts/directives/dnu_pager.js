@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
-angular.module("dnuApp.directives")
-  .directive("dnuPager", function () {
+angular.module('dnuApp.directives')
+  .directive('dnuPager', function () {
     return {
       templateUrl: 'views/dnu-pager.html'
     };
@@ -9,7 +9,7 @@ angular.module("dnuApp.directives")
   .directive('activeLink', ['$location', function (location) {
     return {
       restrict: 'A',
-      link: function (scope, element, attrs, controller) {
+      link: function (scope, element, attrs) {
         var clazz = attrs.activeLink;
         var path = attrs.ngHref;
         path = path.substring(1); //hack because path does not return including hashbang

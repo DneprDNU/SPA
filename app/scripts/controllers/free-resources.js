@@ -15,13 +15,11 @@ angular.module('dnuApp')
     else {
       $scope.freeResources = restFreeResources.list();
     }
-    console.log($scope);
   });
 
 angular.module('dnuApp')
   .controller('FreeLastResourcesCtrl', function ($scope, restResources) {
     $scope.resources = restResources.list();
-    console.log($scope);
   });
 
 angular.module('dnuApp')

@@ -1,13 +1,12 @@
-"use strict";
+'use strict';
 
-angular.module("dnuApp.directives", []);
-angular.module("dnuApp.directives")
-  .directive("isotopeDnuContainer", function () {
+angular.module('dnuApp.directives', []);
+angular.module('dnuApp.directives')
+  .directive('isotopeDnuContainer', function () {
     return {
-      link: function (scope, element, attrs) {
-        scope.$on('LastElem', function (event) {
-          console.log('#' + element.get(0).id);
-          var iso = new Isotope('#' + element.get(0).id, {
+      link: function (scope, element) {
+        scope.$on('LastElem', function () {
+          new Isotope('#' + element.get(0).id, {
             itemSelector: '.isotope-item',
             layoutMode: 'masonry'
           });
@@ -17,7 +16,7 @@ angular.module("dnuApp.directives")
     };
   })
   .directive("isotopeDnuItem", function () {
-    return function (scope, element, attrs) {
+    return function (scope, element) {
       if (scope.$last) {
         scope.$emit('LastElem');
       }
