@@ -43,8 +43,9 @@ angular.module('dnuApp')
 angular.module('dnuApp')
   .controller('UserAdminCreateCtrl', function ($scope, $rootScope, $location, $upload, $routeParams, restUsers, restFaculties) {
     $scope.save = function() {
-      restUsers.create($scope.userr);
-      $location.path('/admin/users');
+      restUsers.create($scope.userr, function(){
+        $location.path('/admin/users');
+      });
     };
     $scope.roles = [
       {
