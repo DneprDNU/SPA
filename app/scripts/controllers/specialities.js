@@ -29,6 +29,6 @@ angular.module('dnuApp')
   .controller('SpecialityCtrl', function ($scope, $routeParams, restSpeciality, restFaculty, restSubjects, restTeachers) {
     $scope.speciality = restSpeciality.get({id: $routeParams.id, facultyId: $routeParams.facultyId});
     $scope.faculty = restFaculty.get({id: $routeParams.facultyId});
-    $scope.subjects = restSubjects.list({departmentId: $routeParams.id});
-    $scope.teachers = $scope.speciality.supervisors;
+    $scope.subjects = restSubjects.list({specialityId: $routeParams.id});
+    $scope.teachers = restTeachers.list({specialityId: $routeParams.id});
   });
