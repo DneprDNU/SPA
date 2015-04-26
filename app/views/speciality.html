@@ -1,40 +1,53 @@
 <div ng-controller="SpecialityCtrl">
+  <div class="panel panel-default">
+    <div class="panel-heading"><strong>{{ speciality.name }}</strong></div>
+    <div class="panel-body">
+      <dl>
+        <dt>Шифр</dt>
+        <dd>{{ speciality.code }}</dd>
+        <dt>Опис</dt>
+        <dd>{{ speciality.description }}</dd>
+        <dt>Кафедра</dt>
+        <dd>{{ speciality.departments[0].name }}</dd>
+      </dl>
+    </div>
+  </div>
   <tabset>
     <tab heading="Викладачі" select="updateIsotope()">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12">
-        <div id="departments" class="content-list">
-          <section id="isotope-container" isotope-dnu-container>
-            <div ng-repeat="item in speciality.supervisors" class="department isotope-item" isotope-dnu-item>
-              <a ng-href="#/faculty/{{ faculty.id }}/speciality/{{ speciality.id }}/teacher/{{ item.id }}"><img src="{{ item.image }}" />
-              <p>{{ item.name }}</p>
-              <p>{{ item.description }}</p></a>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div id="departments" class="content-list">
+              <section id="isotope-container" isotope-dnu-container>
+                <div ng-repeat="item in speciality.supervisors" class="department isotope-item" isotope-dnu-item>
+                  <a ng-href="#/faculty/{{ faculty.id }}/speciality/{{ speciality.id }}/teacher/{{ item.id }}"><img src="{{ item.image }}" />
+                  <p>{{ item.name }}</p>
+                  <p>{{ item.description }}</p></a>
+                </div>
+              </section>
             </div>
-          </section>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-      </tab>
+    </tab>
 
     <tab heading="Предмети" select="updateIsotope()">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12">
-        <div id="specialities" class="content-list">
-          <section id="isotope-container-2"  isotope-dnu-container>
-            <div ng-repeat="item in subjects" class="speciality isotope-item" isotope-dnu-item>
-              <a ng-href="#/faculty/{{ faculty.id }}/speciality/{{ speciality.id }}/subject/{{ item.id }}">
-                <img src="{{ item.image }}"/>
-              <p>{{ item.name }}</p>
-              <p>{{ item.description }}</p></a>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div id="specialities" class="content-list">
+              <section id="isotope-container-2"  isotope-dnu-container>
+                <div ng-repeat="item in subjects" class="speciality isotope-item" isotope-dnu-item>
+                  <a ng-href="#/faculty/{{ faculty.id }}/speciality/{{ speciality.id }}/subject/{{ item.id }}">
+                    <img src="{{ item.image }}"/>
+                  <p>{{ item.name }}</p>
+                  <p>{{ item.description }}</p></a>
+                </div>
+              </section>
             </div>
-          </section>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
     </tab>
   </tabset>
 </div>

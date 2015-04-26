@@ -1,4 +1,15 @@
 <div ng-controller="FacultyCtrl">
+  <div class="panel panel-default">
+    <div class="panel-heading"><strong>{{ faculty.name }}</strong></div>
+    <div class="panel-body">
+      <dl>
+        <dt>Абревiатура</dt>
+        <dd>{{ faculty.shortName }}</dd>
+        <dt>Опис</dt>
+        <dd>{{ faculty.description }}</dd>
+      </dl>
+    </div>
+  </div>
   <tabset>
     <tab heading="Кафедри" select="updateIsotope()">
       <div class="container">
