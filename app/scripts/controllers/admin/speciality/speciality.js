@@ -25,12 +25,18 @@ angular.module('dnuApp')
           fileFormDataName: ['image']
         }).success(function (data, status, headers, config) {
           $location.path('/admin/specialities');
-        });
+        })
+          .error(function (data, status, headers, config) {
+            $location.path('/admin/specialities');
+          });
       }
       else {
         restSpeciality.update($scope.speciality, function(){
           $location.path('/admin/specialities');
-        });
+        },
+          function(){
+            $location.path('/admin/specialities');
+          });
       }
       $location.path('/admin/specialities');
     };
@@ -42,7 +48,7 @@ angular.module('dnuApp')
     $scope.speciality = restSpeciality.get({id: $routeParams.id});
 
     $scope.supervisors = restTeachers.list();
-    $scope.departments = restTeachers.list();
+    $scope.departments = restDepartments.admin_list();
 
     // callback for ng-click 'createResource':
     $scope.createNewSpeciality = function () {
@@ -51,7 +57,7 @@ angular.module('dnuApp')
   });
 
 angular.module('dnuApp')
-  .controller('SpecialityAdminCreateCtrl', function ($scope, $rootScope, $location, $upload, $routeParams, restSpecialities, restTeachers) {
+  .controller('SpecialityAdminCreateCtrl', function ($scope, $rootScope, $location, $upload, $routeParams, restSpecialities, restTeachers, restDepartments) {
 
     $scope.save = function() {
       if (angular.isArray($scope.speciality.image)) {
@@ -69,7 +75,10 @@ angular.module('dnuApp')
           fileFormDataName: ['image']
         }).success(function () {
           $location.path('/admin/specialities');
-        });
+        })
+          .error(function (data, status, headers, config) {
+            $location.path('/admin/specialities');
+          });
       }
       else {
         restSpecialities.create($scope.speciality, function(){
@@ -80,6 +89,7 @@ angular.module('dnuApp')
     };
 
     $scope.supervisors = restTeachers.list();
+    $scope.departments = restDepartments.admin_list();
 
     $scope.cancel = function () {
       $location.path('/admin/specialities');
