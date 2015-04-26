@@ -15,6 +15,7 @@
     <dt>Опис</dt>
     <dd>{{ resource.description }}</dd>
     <dt>Завантажити</dt>
-    <dd ng-if="$root.user"><a ng-href="{{ resource.fileR }}">{{ resource.fileR }}</a></dd>
+    <dd ng-if="$root.isLoggedIn"><a ng-href="{{ resource.fileR }}">{{ resource.fileR }}</a></dd>
+    <dd ng-if="!$root.isLoggedIn">Ви маєте увійти як користувач, щоб мати змогу завантажувати матеріали</dd>
   </dl>
 </div>

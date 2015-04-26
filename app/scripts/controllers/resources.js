@@ -26,8 +26,8 @@ angular.module('dnuApp')
   });
 
 angular.module('dnuApp')
-  .controller('ResourceCtrl', function ($scope, $rootScope, $routeParams, restResource, restAuthentication ) {
-    $scope.isLoggedIn = $rootScope.user;
+  .controller('ResourceCtrl', function ($scope, $rootScope, $routeParams, restResource ) {
+    $scope.isLoggedIn = $rootScope.isLoggedIn;
     $scope.resource = restResource.get({id: $routeParams.id});
   });
 

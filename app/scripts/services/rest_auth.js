@@ -30,7 +30,6 @@ angular.module('restAuth', ['ngResource'])
 
       return $http(req)
         .success(function (res) {
-          console.log(res);
           Session.create(res.name, res.roles);
           authService.reInit();
           return res.data;
