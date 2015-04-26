@@ -81,9 +81,12 @@ angular.module('dnuApp')
           });
       }
       else {
-        restSpecialities.create($scope.speciality, function(){
-          $location.path('/admin/specialities');
-        });
+        restSpecialities.create($scope.speciality, function () {
+            $location.path('/admin/specialities');
+          }
+          , function () {
+            $location.path('/admin/specialities');
+          });
       }
 
     };
