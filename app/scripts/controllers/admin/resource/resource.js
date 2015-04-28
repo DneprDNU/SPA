@@ -10,6 +10,7 @@
 angular.module('dnuApp')
   .controller('ResourceAdminEditCtrl', function ($scope, $rootScope, $location, $routeParams, $upload, restResource, restCategories, restSubjects) {
     $scope.save = function () {
+      debugger;
       if (angular.isArray($scope.resource.image) || angular.isArray($scope.resource.fileR)) {
         var files = [],
           filesFormDataName = [];
@@ -51,8 +52,8 @@ angular.module('dnuApp')
     $scope.cancel = function () {
       $location.path('/admin/resources');
     };
-
     $scope.resource = restResource.get({id: $routeParams.id});
+    $scope.resource_image = $scope.resource.image || 'images/default-picture.png';
 
     $scope.categories = restCategories.list();
     $scope.subjects = restSubjects.list();
@@ -104,7 +105,7 @@ angular.module('dnuApp')
 
     $scope.categories = restCategories.list();
     $scope.subjects = restSubjects.list();
-
+    $scope.resource_image = 'images/default-picture.png';
     $scope.cancel = function () {
       $location.path('/admin/resources');
     };

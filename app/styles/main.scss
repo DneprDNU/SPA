@@ -189,7 +189,9 @@ $header-img: image-url('DNU-wide.jpg', false, false);
     margin-top: 28px;
   }
 }
-
+.btn.btn-primary.btn-lg.btn-block {
+  margin: 20px 0;
+}
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
