@@ -1,7 +1,6 @@
 <div style="margin: 20px 0">
   <a ng-href="#/admin/resources"><< Повернутися до списку</a>
 </div>
-
 <form role="form">
   <div class="form-group">
     <label for="name">Назва</label>
@@ -23,6 +22,11 @@
   <div class="form-group">
     <label for="categories">Категорії</label>
     <select id="categories" ng-options="item.name for item in categories track by item.id" ng-model="resource.categories" multiple bootstrap-select title="Оберіть категорію">
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="speciality">Спецiальность</label>
+    <select id="speciality" ng-options="item.name for item in specialities track by item.id" ng-model="resource.speciality" bootstrap-select title="Оберіть спецiальнiсть">
     </select>
   </div>
   <div class="form-group">

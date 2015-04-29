@@ -1,3 +1,6 @@
+<div style="margin: 20px 0">
+  <a ng-href="#/admin/faculties"><< Повернутися до списку факультетiв</a>
+</div>
 <form role="form">
   <div class="form-group">
     <label for="name">Назва</label>
@@ -5,8 +8,11 @@
   </div>
   <div class="form-group">
     <label for="description">Опис</label>
-    <textarea class="form-control" id="description" placeholder="Введіть опис"
-              ng-model="faculty.description"></textarea>
+    <textarea class="form-control" id="description" placeholder="Введіть опис" ng-model="faculty.description"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="short-name">Абревiатура</label>
+    <input type="text" class="form-control" id="short-name" placeholder="Введіть абревiатуру" ng-model="faculty.shortName">
   </div>
   <div class="form-group">
     <label for="departments">Кафедри</label>

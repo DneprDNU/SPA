@@ -8,7 +8,7 @@
  * Controller of the angularApp
  */
 angular.module('dnuApp')
-  .controller('ResourceAdminEditCtrl', function ($scope, $rootScope, $location, $routeParams, $upload, restResource, restCategories, restSubjects) {
+  .controller('ResourceAdminEditCtrl', function ($scope, $rootScope, $location, $routeParams, $upload, restResource, restCategories, restSubjects, restSpecialities) {
     $scope.save = function () {
       debugger;
       if (angular.isArray($scope.resource.image) || angular.isArray($scope.resource.fileR)) {
@@ -56,6 +56,7 @@ angular.module('dnuApp')
     $scope.resource_image = $scope.resource.image || 'images/default-picture.png';
 
     $scope.categories = restCategories.list();
+    $scope.specialities = restSpecialities.list();
     $scope.subjects = restSubjects.list();
 
     // callback for ng-click 'createResource':
@@ -65,7 +66,7 @@ angular.module('dnuApp')
   });
 
 angular.module('dnuApp')
-  .controller('ResourceAdminCreateCtrl', function ($scope, $rootScope, $location, $routeParams, $upload, restResources, restCategories, restSubjects) {
+  .controller('ResourceAdminCreateCtrl', function ($scope, $rootScope, $location, $routeParams, $upload, restResources, restCategories, restSubjects, restSpecialities) {
     $scope.save = function () {
       if (angular.isArray($scope.resource.image) || angular.isArray($scope.resource.fileR)) {
         var files = [],
@@ -105,6 +106,7 @@ angular.module('dnuApp')
 
     $scope.categories = restCategories.list();
     $scope.subjects = restSubjects.list();
+    $scope.specialities = restSpecialities.list();
     $scope.resource_image = 'images/default-picture.png';
     $scope.cancel = function () {
       $location.path('/admin/resources');
