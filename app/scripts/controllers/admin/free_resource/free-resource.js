@@ -8,7 +8,7 @@
  * Controller of the angularApp
  */
 angular.module('dnuApp')
-  .controller('FreeResourceAdminEditCtrl', function ($scope, $rootScope, $location, $routeParams, $upload, restFreeResource, restCategories, restSubjects) {
+  .controller('FreeResourceAdminEditCtrl', function ($scope, $rootScope, $location, $routeParams, $upload, restFreeResource, restFreeCategories, restSubjects) {
     $scope.save = function() {
       restFreeResource.update($scope.freeResource);
 
@@ -21,7 +21,7 @@ angular.module('dnuApp')
 
     $scope.freeResource = restFreeResource.get({id: $routeParams.id});
 
-    $scope.categories = restCategories.list();
+    $scope.categories = restFreeCategories.list();
     $scope.subjects = restSubjects.list();
 
     // callback for ng-click 'createResource':
@@ -31,7 +31,7 @@ angular.module('dnuApp')
   });
 
 angular.module('dnuApp')
-  .controller('FreeResourceAdminCreateCtrl', function ($scope, $location, $routeParams, restFreeResources, restCategories, restSubjects) {
+  .controller('FreeResourceAdminCreateCtrl', function ($scope, $location, $routeParams, restFreeResources, restFreeCategories, restSubjects) {
     $scope.save = function() {
       restFreeResources.create($scope.freeResource, function(){
         $location.path('/admin/free-resources');
@@ -39,7 +39,7 @@ angular.module('dnuApp')
 
     };
 
-    $scope.categories = restCategories.list();
+    $scope.categories = restFreeCategories.list();
     $scope.subjects = restSubjects.list();
 
     $scope.cancel = function () {

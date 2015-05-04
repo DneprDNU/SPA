@@ -17,7 +17,7 @@ angular.module('dnuApp')
     // callback for ng-click 'deleteResource':
     $scope.deleteUser = function (userId) {
       restUser.delete({ id: userId }, function(){
-        $scope.faculties = restUsers.list();
+        $scope.users = restUsers.admin_list();
       });
     };
 

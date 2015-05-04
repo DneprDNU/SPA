@@ -141,6 +141,18 @@ angular
         templateUrl: 'views/admin/category/category.html',
         controller: 'CategoryAdminEditCtrl'
       })
+      .when('/admin/free-categories', {
+        templateUrl: 'views/admin/free_category/categories.html',
+        controller: 'FreeCategoryAdminListCtrl'
+      })
+      .when('/admin/free-category', {
+        templateUrl: 'views/admin/free_category/category.html',
+        controller: 'FreeCategoryAdminCreateCtrl'
+      })
+      .when('/admin/free-category/:id', {
+        templateUrl: 'views/admin/free_category/category.html',
+        controller: 'FreeCategoryAdminEditCtrl'
+      })
       .when('/admin/resources', {
         templateUrl: 'views/admin/resource/resources.html',
         controller: 'ResourceAdminListCtrl'

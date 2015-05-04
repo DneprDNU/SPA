@@ -8,9 +8,9 @@
  * Controller of the angularApp
  */
 angular.module('dnuApp')
-  .controller('CategoryAdminEditCtrl', function ($scope, $location, $routeParams, restCategorie) {
+  .controller('CategoryAdminEditCtrl', function ($scope, $location, $routeParams, restCategory) {
     $scope.save = function() {
-      restCategorie.update($scope.category, function(){
+      restCategory.update($scope.category, function(){
         $location.path('/admin/categories');
       });
     };
@@ -19,7 +19,7 @@ angular.module('dnuApp')
       $location.path('/admin/categories');
     };
 
-    $scope.category = restCategorie.get({id: $routeParams.id});
+    $scope.category = restCategory.get({id: $routeParams.id});
 
     // callback for ng-click 'createResource':
     $scope.createNewCategory = function () {

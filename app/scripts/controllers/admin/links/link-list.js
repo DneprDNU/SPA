@@ -8,7 +8,7 @@
  * Controller of the angularApp
  */
 angular.module('dnuApp')
-  .controller('LinkAdminListCtrl', function ($scope, $location, $routeParams, restFaculty, restLinks) {
+  .controller('LinkAdminListCtrl', function ($scope, $location, $routeParams, restFaculty, restLinks, restLink) {
     // callback for ng-click 'editResource':
     $scope.editLink = function (linkId) {
       $location.path('/admin/link/' + linkId);
@@ -16,7 +16,7 @@ angular.module('dnuApp')
 
     // callback for ng-click 'deleteResource':
     $scope.deleteLink = function (linkId) {
-      restLinks.delete({ id: linkId }, function () {
+      restLink.delete({ id: linkId }, function () {
         $scope.links = restLinks.list();
       });
     };
