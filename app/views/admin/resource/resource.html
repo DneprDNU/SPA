@@ -25,7 +25,7 @@
     </select>
   </div>
   <div class="form-group">
-    <label for="speciality">Спецiальность</label>
+    <label for="speciality">Спецiальнiсть</label>
     <select id="speciality" ng-options="item.name for item in specialities track by item.id" ng-model="resource.speciality" bootstrap-select title="Оберіть спецiальнiсть">
     </select>
   </div>
@@ -41,25 +41,26 @@
     <img ng-src="{{ resource.image }}" width="300"/>
   </div>
   <div class="form-group">
-    <label ng-if="!(resource && resource.image)" for="resource-file">Зображення ресурсу</label>
-    <label ng-if="resource && resource.image" for="resource-file">Змiнити зображення ресурсу</label>
+    <label ng-if="!(resource && resource.image)" for="resource-file">Зображення матерiалу</label>
+    <label ng-if="resource && resource.image" for="resource-file">Змiнити зображення матерiалу</label>
     <input type="file" id="resource-image" ng-model="resource.image" ng-file-select ng-multiple="false" ng-file-change="fileSelected($files, $event)" name="image" required>
   </div>
   <div ng-if="resource === undefined || !resource.fileR || resource.fileR.length === 1">
-    <p>Додайте файл материалу</p>
+    <p>Додайте файл матерiалу</p>
   </div>
   <div ng-if="resource !== undefined && resource.fileR && resource.fileR.length !== 1">
-    <p>Посилання на зкачування файлу -  <a ng-href="{{ resource.fileR }}">{{ resource.name }}</a></p>
+    <p>Посилання на зкачування файлу матерiалу -  <a ng-href="{{ resource.fileR }}">{{ resource.name }}</a></p>
   </div>
   <div class="form-group">
-    <label ng-if="!(resource && resource.image)"  for="resource-file">Файл ресурсу</label>
-    <label ng-if="resource && resource.image"  for="resource-file">Змiнити файл ресурсу</label>
+    <label ng-if="!(resource && resource.image)"  for="resource-file">Файл матерiалу</label>
+    <label ng-if="resource && resource.image"  for="resource-file">Змiнити файл матерiалу</label>
     <input type="file" id="resource-file" ng-model="resource.fileR" ng-file-select ng-multiple="false" ng-file-change="fileSelected($files, $event)" name="fileR" required>
   </div>
   <div class="control-group">
     <div class="controls">
+      <div dnu-loader></div>
       <a ng-click="cancel()" class="btn btn-small">Відміна</a>
-      <a ng-click="save()" class="btn btn-small btn-primary">Зберегти ресурс</a>
+      <button ng-click="save()" class="btn btn-small btn-primary" onclick="this.disabled=true;document.getElementById('fountainG').removeAttribute('style')">Зберегти ресурс</button>
     </div>
   </div>
 </form>
