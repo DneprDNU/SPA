@@ -8,7 +8,7 @@
   </div>
   <div class="form-group">
     <label for="resources">Ресурси</label>
-    <select id="resources" ng-options="item.name for item in resources track by item.id" ng-model="subject.resources" multiple bootstrap-select>
+    <select id="resources" ng-options="item.name for item in resources track by item.id" ng-model="subject.resources" multiple bootstrap-select title="Оберіть ресурси">
     </select>
   </div>
   <div ng-if="subject === undefined || subject.image === undefined || subject.image.length === 0">
