@@ -10,7 +10,7 @@
 angular.module('dnuApp')
   .controller('LinkAdminEditCtrl', function ($scope, restSpecialities, restSubjects, restTeachers, $location, $routeParams, restLink) {
     $scope.save = function() {
-      restTeachers.update($scope.link);
+      restLink.update($scope.link);
       $location.path('/admin/links');
     };
 

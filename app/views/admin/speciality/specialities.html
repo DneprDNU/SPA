@@ -7,6 +7,7 @@
     <thead>
     <tr>
       <th style="min-width: 80px;">Назва</th>
+      <th style="min-width: 30px;">Шифр</th>
       <th style="width:20px;"></th>
       <th style="width:20px;"> </th>
     </tr>
@@ -14,6 +15,7 @@
     <tbody>
     <tr ng-repeat="speciality in specialities">
       <td>{{ speciality.name }}</td>
+      <td>{{ speciality.code }}</td>
       <td><a ng-click="editSpeciality(speciality.id)" class="btn btn-small btn-primary">Редагувати</a></td>
       <td><a ng-click="deleteSpeciality(speciality.id)" class="btn btn-small btn-danger">Видалити</a></td>
     </tr>

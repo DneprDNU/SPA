@@ -13,7 +13,7 @@
     </thead>
     <tbody>
     <tr ng-repeat="item in links">
-      <td>Викладач <strong>{{ item.teacher.name }}</strong> викладае <strong>{{ item.subject.name }}</strong> на спецiальностi <strong>{{ item.speciality.name }}</strong></td>
+      <td>Викладач <strong>{{ item.teacher.name }}</strong> викладае <strong>{{ item.subject.name }}</strong> на спецiальностi <strong>{{ label(item.speciality.name, item.speciality.code) }}</strong></td>
       <td><a ng-click="editLink(item.id)" class="btn btn-small btn-primary">Редагувати</a></td>
       <td><a ng-click="deleteLink(item.id)" class="btn btn-small btn-danger">Видалити</a></td>
     </tr>

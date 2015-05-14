@@ -313,5 +313,16 @@ angular
     $rootScope.updateIsotope = function() {
       window.dispatchEvent(new Event('resize'));
     };
+
+    $rootScope.label = function (speciality, code) {
+      if (code !== undefined) {
+        return speciality + " (" + code + ")";
+      }
+      if (speciality != undefined) {
+        return speciality;
+      }
+      return '';
+    }
+
     $route.reload('main-menu');
   });
