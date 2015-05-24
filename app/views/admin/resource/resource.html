@@ -26,7 +26,7 @@
   </div>
   <div class="form-group">
     <label for="speciality">Спецiальнiсть</label>
-    <select id="speciality" ng-options="item.name for item in specialities track by item.id" ng-model="resource.speciality" bootstrap-select title="Оберіть спецiальнiсть">
+    <select id="speciality" ng-options="label(item.name, item.code) for item in specialities track by item.id" ng-model="resource.speciality" bootstrap-select title="Оберіть спецiальнiсть">
     </select>
   </div>
   <div class="form-group">
